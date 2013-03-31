@@ -80,12 +80,14 @@ var settings = { profiles: [] },
 		var form = $(this);
 		var estimates = $('table#estimates tbody');
 
-		var description = form.find('[name=description]').val();
+		var descriptionField = form.find('[name=description]');
+		var description = descriptionField.val();
 		
 		estimates.append(buildRow(description, '', ''));
 		recalculate(true);
 
 		form[0].reset();
+		descriptionField.focus();
 		e.preventDefault();
 	};
 
