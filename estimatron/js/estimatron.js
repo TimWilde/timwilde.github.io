@@ -94,7 +94,7 @@ var settings = { profiles: [] },
 	var buildRow = function(d, s, c){
 		var row = $('<tr></tr>');
 
-		row.append('<td class="description"><a href="#" class="btn btn-danger btn-mini delete"><i class="icon-remove icon-white"></i> Remove</a><span>' + d + '</span></td>');
+		row.append('<td class="description"><a href="#" class="btn btn-danger btn-mini delete">Remove</a><span>' + d + '</span></td>');
 		row.append(selectSize(s));
 		row.append(selectComplexity(c));
 		row.append('<td class="time center"></td>');
