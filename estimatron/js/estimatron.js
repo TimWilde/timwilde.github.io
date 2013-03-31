@@ -87,7 +87,8 @@ var settings = { profiles: [] },
 		recalculate(true);
 
 		form[0].reset();
-		descriptionField.focus();
+		descriptionField.blur();
+		setTimeout(descriptionField.focus, 0);
 		e.preventDefault();
 	};
 
