@@ -28,8 +28,8 @@ var settings = { profiles: [] },
 		$('#edit-profile-form').on('submit', editProfile);
 		$('form#select-profile-form').on('submit', switchProfile);
 		$('#add-task').on('submit', addTask);
-		$('#select-profile-modal').modal({backdrop: 'static', show: false});
-		$('#edit-profile-modal').modal({backdrop: 'static', show: false});
+		$('#select-profile-modal').modal({backdrop: 'static', show: false, modalOverflow: true});
+		$('#edit-profile-modal').modal({backdrop: 'static', show: false, modalOverflow: true});
 		$(document).on('click', 'a.delete', removeRow);
 		$(document).on('change', 'table#estimates tbody select', true, recalculate);
 		$('.sortable').sortable();
@@ -185,7 +185,7 @@ var settings = { profiles: [] },
 
 	var selectProfile = function(reload){
 		populateProfileModal(reload);
-		$('#select-profile-modal').modal({show: true, backdrop: 'static'});
+		$('#select-profile-modal').modal({show: true, backdrop: 'static', modalOverflow: true});
 	};
 
 	var switchProfile = function(e){
