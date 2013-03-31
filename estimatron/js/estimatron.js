@@ -230,6 +230,7 @@ var settings = { profiles: [] },
 
 		if(profile){
 			profileForm.find('#name').val(profile.name);
+			profileForm.find('#unit').val(profile.unit);
 			profileForm.find('#rate').val(profile.rate);
 			profileForm.find('#small').val(profile.size.small);
 			profileForm.find('#medium').val(profile.size.medium);
