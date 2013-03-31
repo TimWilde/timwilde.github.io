@@ -33,6 +33,10 @@ legend {
 	margin-bottom: 0;
 }
 
+.well ol {
+	margin-left: 0;
+}
+
 th.center,
 td.center {
 	text-align: center;
