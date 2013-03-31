@@ -38,6 +38,7 @@ var settings = { profiles: [] },
 	var removeRow = function(){
 		$(this).closest('tr').remove();
 		recalculate(true);
+		return false;
 	};
 
 	var recalculate = function(save){
