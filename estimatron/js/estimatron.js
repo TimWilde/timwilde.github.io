@@ -84,6 +84,8 @@ var settings = { profiles: [] },
 
 		var descriptionField = form.find('[name=description]');
 		var description = descriptionField.val();
+
+		if(description == '') return false;
 		
 		estimates.append(buildRow(description, '', ''));
 		recalculate(true);
