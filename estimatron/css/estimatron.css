@@ -9,6 +9,14 @@
 	src: url('../fonts/Quicksand_Light_Oblique');
 }
 
+#saving {
+	color: #fff;
+	float: right;
+	padding: 0.5em;
+	background-color: #a66;
+	border-radius: 3px;
+}
+
 #settings ol {
 	list-style-type: none;
 }

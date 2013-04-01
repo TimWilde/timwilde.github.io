@@ -1,7 +1,8 @@
 var settings = { profiles: [] },
 	 profile,
 	 validation,
-	 details = { rows: [] };
+	 details = { rows: [] },
+	 saveTimer;
 
 (function($){
 	
@@ -146,11 +147,29 @@ var settings = { profiles: [] },
 	};
 
 	var saveSettings = function(){
+		showSaving();
 		localStorage.settings = JSON.stringify(settings);
 	};
 
 	var saveDetails = function(){
+		showSaving();
 		localStorage.details = JSON.stringify(details);
+	};
+
+	var showSaving = function(){
+		clearTimeout(saveTimer);
+
+		var saving = $('#saving');
+
+		saving
+			.stop(true)
+			.animate({ opacity: 100 })
+			.removeClass('hide')
+			.show();
+
+		saveTimer = setTimeout(function(){
+			saving.fadeOut('slow');
+		}, 500);
 	};
 
 	var loadSettings = function(){
