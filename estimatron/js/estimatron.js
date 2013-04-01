@@ -223,6 +223,8 @@ var settings = { profiles: [] },
 		} else {
 			$('#select-profile-modal .alert-warning').removeClass('hide');
 		}
+
+		$('.focus').focus();
 		return false;
 	};
 
@@ -309,6 +311,7 @@ var settings = { profiles: [] },
 
 		$('#edit-profile-modal').modal('hide');
 
+		$('.focus').focus();
 		return false;
 	};
 })(jQuery);
