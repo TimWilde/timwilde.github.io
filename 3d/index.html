@@ -17,6 +17,7 @@
          <label>
             Model:
             <select id="model">
+               <option value="0">Cube</option>
                <option value="1">Sphere</option>
                <option value="2">Torus</option>
                <option value="3">Monkey</option>
@@ -27,18 +28,36 @@
             Show normals
          </label>
       </div>
+      <div>
+         <label>
+            <input id="rotX" type="checkbox" checked />
+            Rotate X
+         </label>
+
+         <label>
+            <input id="rotY" type="checkbox" checked />
+            Rotate Y
+         </label>
+
+         <label>
+            <input id="rotZ" type="checkbox" checked />
+            Rotate Z
+         </label>
+      </div>
       <div id="info"></div>
 
+      <script type="text/javascript" src="cube.js"></script>
       <script type="text/javascript" src="sphere.js"></script>
       <script type="text/javascript" src="torus.js"></script>
       <script type="text/javascript" src="monkey.js"></script>
+
       <script type="text/javascript">
          var identity = [[1,0,0,0],
                          [0,1,0,0],
                          [0,0,1,0],
                          [0,0,0,1]];
 
-         var camera = [0, 0, 20];
+         var camera = [0, 0, 150];
          var light = [250,-250,500];
 
          var angle = 1.0;
@@ -52,6 +71,9 @@
          var modelSelect = document.getElementById('model');
          var showNormals = document.getElementById('normals');
          var info = document.getElementById('info');
+         var rotX = document.getElementById('rotX');
+         var rotY = document.getElementById('rotY');
+         var rotZ = document.getElementById('rotZ');
 
          var getRadians = function(degrees){
             return degrees * (Math.PI / 180);
@@ -107,8 +129,8 @@
                var vertex = shape[v];
                output[v] = [];
 
-               output[v][0] = (camera[2] * (vertex[0]-camera[0])) / (camera[2] + vertex[2]) + camera[0]; // X
-               output[v][1] = (camera[2] * (vertex[1]-camera[1])) / (camera[2] + vertex[2]) + camera[1]; // Y
+               output[v][0] = camera[2] * (vertex[0]-camera[0]) / (camera[2] + vertex[2]) + camera[0]; // X
+               output[v][1] = camera[2] * (vertex[1]-camera[1]) / (camera[2] + vertex[2]) + camera[1]; // Y
             }
 
             return output;
@@ -188,7 +210,7 @@
                      var nYf = (camera[2] * ((object.normals[i][1] + ((normal[1] / scale) * normalSize)) - camera[1])) / (camera[2] + (object.normals[i][2] + ((normal[2] / scale) * normalSize))) + camera[1];
 
                      ctx.beginPath();
-                     ctx.strokeStyle = '#0f0';
+                     ctx.strokeStyle = '#0c0';
                      ctx.moveTo(xOff + (nXs * scale), yOff + (nYs * scale));
                      ctx.lineTo(xOff + (nXf * scale), yOff + (nYf * scale));
                      ctx.stroke();
@@ -226,14 +248,14 @@
          };
 
          var plotShape = function(obj, ctx){
-            var transformedPoints = transform(obj.points, rotateMatrix(angle, angle, angle));
+            var transformedPoints = transform(obj.points, rotateMatrix(rotX.checked ? angle : 0, rotY.checked ? angle : 0, rotZ.checked ? angle : 0));
             sortByZIndex(transformedPoints, obj);
 
             if(showNormals.checked)
                calculateCenter(transformedPoints, obj);
 
             var twoDPoints = project(transformedPoints);
-            plotObject(transformedPoints, twoDPoints, obj, 160, 100, 65.0, ctx);
+            plotObject(transformedPoints, twoDPoints, obj, 160, 100, 60.0, ctx);
          };
 
          var clearCanvas = function(ctx){
@@ -251,6 +273,7 @@
             }
          };
 
+         fixIndexing(cubeObject);
          fixIndexing(torusObject);
          fixIndexing(chimpObject);
 
@@ -263,14 +286,21 @@
 
                   switch(modelSelect.value){
                      default:
+                     case '0':
+                        plotShape(cubeObject, context);
+                        info.innerText = 'Points: ' + cubeObject.points.length + ', Polys: ' + cubeObject.triangles.length;
+                        break;
+
                      case '1':
                         plotShape(sphereObject, context);
                         info.innerText = 'Points: ' + sphereObject.points.length + ', Polys: ' + sphereObject.triangles.length;
                         break;
+
                      case '2':
                         plotShape(torusObject, context);
                         info.innerText = 'Points: ' + torusObject.points.length + ', Polys: ' + torusObject.triangles.length;
                         break;
+
                      case '3':
                         plotShape(chimpObject, context);
                         info.innerText = 'Points: ' + chimpObject.points.length + ', Polys: ' + chimpObject.triangles.length;
