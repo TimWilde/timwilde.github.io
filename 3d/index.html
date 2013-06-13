@@ -23,9 +23,16 @@
                <option value="3">Monkey</option>
             </select>
          </label>
+      </div>
+      <div>
          <label>
             <input type="checkbox" id="normals" value="1" />
             Show normals
+         </label>
+
+         <label>
+            <input type="checkbox" id="showEdges" checked />
+            Show edges
          </label>
       </div>
       <div>
@@ -70,6 +77,7 @@
          var out = document.getElementById('out');
          var modelSelect = document.getElementById('model');
          var showNormals = document.getElementById('normals');
+         var showEdges = document.getElementById('showEdges');
          var info = document.getElementById('info');
          var rotX = document.getElementById('rotX');
          var rotY = document.getElementById('rotY');
@@ -199,7 +207,7 @@
                   ctx.closePath();
                   ctx.fill();
 
-                  ctx.strokeStyle = '#444';
+                  ctx.strokeStyle = showEdges.checked ? '#444' : ctx.fillStyle;
                   ctx.stroke();
 
                   if(showNormals.checked){
