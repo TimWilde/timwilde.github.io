@@ -22,6 +22,10 @@
                <option value="3">Monkey</option>
             </select>
          </label>
+         <label>
+            <input type="checkbox" id="normals" value="1" />
+            Show normals
+         </label>
       </div>
       <div id="info"></div>
 
@@ -38,13 +42,15 @@
          var light = [250,-250,500];
 
          var angle = 1.0;
-         var delay = 1;
+         var delay = 10;
+         var normalSize = 10.0;
 
          var drawing = false;
 
          var canv = document.getElementById('myCanvas');
          var out = document.getElementById('out');
          var modelSelect = document.getElementById('model');
+         var showNormals = document.getElementById('normals');
          var info = document.getElementById('info');
 
          var getRadians = function(degrees){
@@ -73,36 +79,36 @@
             return output;
          };
 
-         var transform = function(shape, matrix){
+         var transform = function(points, matrix){
             var output = [];
 
-            for(var v = 0; v < shape.length; v++){
+            for(var v = 0; v < points.length; v++){
                output[v] = [];
-               output[v][0] = (shape[v][0] * matrix[0][0]) +
-                              (shape[v][1] * matrix[0][1]) +
-                              (shape[v][2] * matrix[0][2]);
+               output[v][0] = (points[v][0] * matrix[0][0]) +
+                              (points[v][1] * matrix[0][1]) +
+                              (points[v][2] * matrix[0][2]);
 
-               output[v][1] = (shape[v][0] * matrix[1][0]) +
-                              (shape[v][1] * matrix[1][1]) +
-                              (shape[v][2] * matrix[1][2]);
+               output[v][1] = (points[v][0] * matrix[1][0]) +
+                              (points[v][1] * matrix[1][1]) +
+                              (points[v][2] * matrix[1][2]);
 
-               output[v][2] = (shape[v][0] * matrix[2][0]) +
-                              (shape[v][1] * matrix[2][1]) +
-                              (shape[v][2] * matrix[2][2]);
+               output[v][2] = (points[v][0] * matrix[2][0]) +
+                              (points[v][1] * matrix[2][1]) +
+                              (points[v][2] * matrix[2][2]);
             };
 
             return output;
          };
 
-         var project = function(shape, xOff, yOff, zOff, scale){
+         var project = function(shape){
             var output = [];
 
             for(var v in shape){
                var vertex = shape[v];
                output[v] = [];
 
-               output[v][0] = xOff + ((camera[2] * (vertex[0]-camera[0])) / (camera[2] + vertex[2] + zOff) + camera[0]) * scale; // X
-               output[v][1] = yOff + ((camera[2] * (vertex[1]-camera[1])) / (camera[2] + vertex[2] + zOff) + camera[1]) * scale; // Y
+               output[v][0] = (camera[2] * (vertex[0]-camera[0])) / (camera[2] + vertex[2]) + camera[0]; // X
+               output[v][1] = (camera[2] * (vertex[1]-camera[1])) / (camera[2] + vertex[2]) + camera[1]; // Y
             }
 
             return output;
@@ -144,8 +150,7 @@
             return normal;
          };
 
-         var plotObject = function(original, shape, object, ctx){
-            ctx.strokeStyle = '#555';
+         var plotObject = function(original, shape, object, xOff, yOff, scale, ctx){
             ctx.lineWidth = 1;
 
             for(var i = 0; i < object.triangles.length; i++){
@@ -161,18 +166,33 @@
 
                   ctx.beginPath();
 
-                  ctx.moveTo(shape[t[0]][0], shape[t[0]][1]);
-                  for(var j=0; j < t.length; j++){
-                     ctx.lineTo(shape[t[j]][0], shape[t[j]][1]);
-                  }
-
                   var ratio = ((lightAngle < 0 ? 0 : lightAngle * 220) + 35).toFixed(0);
                   ctx.fillStyle = 'rgb(' + ratio + ',' + ratio + ',' + ratio + ')';
-                  ctx.strokeStyle = '#444';
+
+                  ctx.moveTo(xOff + (shape[t[0]][0] * scale), yOff + (shape[t[0]][1]*scale));
+                  for(var j=0; j < t.length; j++){
+                     ctx.lineTo(xOff + (shape[t[j]][0] * scale), yOff + (shape[t[j]][1] * scale));
+                  }
 
                   ctx.closePath();
                   ctx.fill();
+
+                  ctx.strokeStyle = '#444';
                   ctx.stroke();
+
+                  if(showNormals.checked){
+                     var nXs = camera[2] * (object.normals[i][0] - camera[0]) / (camera[2] + object.normals[i][2]) + camera[0];
+                     var nYs = camera[2] * (object.normals[i][1] - camera[1]) / (camera[2] + object.normals[i][2]) + camera[1];
+
+                     var nXf = (camera[2] * ((object.normals[i][0] + ((normal[0] / scale) * normalSize)) - camera[0])) / (camera[2] + (object.normals[i][2] + ((normal[2] / scale) * normalSize))) + camera[0];
+                     var nYf = (camera[2] * ((object.normals[i][1] + ((normal[1] / scale) * normalSize)) - camera[1])) / (camera[2] + (object.normals[i][2] + ((normal[2] / scale) * normalSize))) + camera[1];
+
+                     ctx.beginPath();
+                     ctx.strokeStyle = '#0f0';
+                     ctx.moveTo(xOff + (nXs * scale), yOff + (nYs * scale));
+                     ctx.lineTo(xOff + (nXf * scale), yOff + (nYf * scale));
+                     ctx.stroke();
+                  }
                }
             }
          };
@@ -185,11 +205,35 @@
             });
          };
 
+
+         var calculateCenter = function(points, obj){
+            for(var t = 0; t<obj.triangles.length; t++){
+               var triangle = obj.triangles[t];
+               var cX = 0, cY = 0, cZ = 0;
+
+               for(var v=0; v<triangle.length; v++){
+                  cX += points[triangle[v]][0];
+                  cY += points[triangle[v]][1];
+                  cZ += points[triangle[v]][2];
+               }
+
+               cX /= triangle.length;
+               cY /= triangle.length;
+               cZ /= triangle.length;
+
+               obj.normals[t] = [cX, cY, cZ];
+            }
+         };
+
          var plotShape = function(obj, ctx){
             var transformedPoints = transform(obj.points, rotateMatrix(angle, angle, angle));
             sortByZIndex(transformedPoints, obj);
-            var twoDPoints = project(transformedPoints, 160, 100, 0, 65.0);
-            plotObject(transformedPoints, twoDPoints, obj, ctx);
+
+            if(showNormals.checked)
+               calculateCenter(transformedPoints, obj);
+
+            var twoDPoints = project(transformedPoints);
+            plotObject(transformedPoints, twoDPoints, obj, 160, 100, 65.0, ctx);
          };
 
          var clearCanvas = function(ctx){
