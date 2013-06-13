@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Canvas demo</title>
+      <style type="text/css" media="screen">
+         body {background-color: #000;}
+         label, #info {color:#fff;}
+      </style>
+   </head>
+
+   <body>
+      <canvas id="myCanvas" width="320" height="200">
+         Sorry; your browser doesn't support canvas.
+      </canvas>
+      <span id="out" style="color: #fff;"></span>
+      <div>
+         <label>
+            Model:
+            <select id="model">
+               <option value="1">Sphere</option>
+               <option value="2">Torus</option>
+               <option value="3">Monkey</option>
+            </select>
+         </label>
+      </div>
+      <div id="info"></div>
+
+      <script type="text/javascript" src="sphere.js"></script>
+      <script type="text/javascript" src="torus.js"></script>
+      <script type="text/javascript" src="monkey.js"></script>
+      <script type="text/javascript">
+         var identity = [[1,0,0,0],
+                         [0,1,0,0],
+                         [0,0,1,0],
+                         [0,0,0,1]];
+
+         var camera = [0, 0, 20];
+         var light = [250,-250,500];
+
+         var angle = 1.0;
+         var delay = 1;
+
+         var drawing = false;
+
+         var canv = document.getElementById('myCanvas');
+         var out = document.getElementById('out');
+         var modelSelect = document.getElementById('model');
+         var info = document.getElementById('info');
+
+         var getRadians = function(degrees){
+            return degrees * (Math.PI / 180);
+         };
+
+         var rotateMatrix = function(x,y,z){
+            var output = identity.slice(0);
+
+            x = getRadians(x);
+            y = getRadians(y);
+            z = getRadians(z);
+
+            output[0][0] = Math.cos(y) * Math.cos(z);
+            output[0][1] = -Math.cos(y) * Math.sin(z);
+            output[0][2] = Math.sin(y);
+
+            output[1][0] = (Math.cos(x) * Math.sin(z)) + (Math.sin(x) * Math.sin(y) * Math.cos(z));
+            output[1][1] = (Math.cos(x) * Math.cos(z)) - (Math.sin(x) * Math.sin(y) * Math.sin(z));
+            output[1][2] = -Math.sin(x) * Math.cos(y);
+
+            output[2][0] = (Math.sin(x) * Math.sin(z)) - (Math.cos(x) * Math.sin(y) * Math.cos(z));
+            output[2][1] = (Math.sin(x) * Math.cos(z)) + (Math.cos(x) * Math.sin(y) * Math.sin(z));
+            output[2][2] = Math.cos(x) * Math.cos(y);
+
+            return output;
+         };
+
+         var transform = function(shape, matrix){
+            var output = [];
+
+            for(var v = 0; v < shape.length; v++){
+               output[v] = [];
+               output[v][0] = (shape[v][0] * matrix[0][0]) +
+                              (shape[v][1] * matrix[0][1]) +
+                              (shape[v][2] * matrix[0][2]);
+
+               output[v][1] = (shape[v][0] * matrix[1][0]) +
+                              (shape[v][1] * matrix[1][1]) +
+                              (shape[v][2] * matrix[1][2]);
+
+               output[v][2] = (shape[v][0] * matrix[2][0]) +
+                              (shape[v][1] * matrix[2][1]) +
+                              (shape[v][2] * matrix[2][2]);
+            };
+
+            return output;
+         };
+
+         var project = function(shape, xOff, yOff, zOff, scale){
+            var output = [];
+
+            for(var v in shape){
+               var vertex = shape[v];
+               output[v] = [];
+
+               output[v][0] = xOff + ((camera[2] * (vertex[0]-camera[0])) / (camera[2] + vertex[2] + zOff) + camera[0]) * scale; // X
+               output[v][1] = yOff + ((camera[2] * (vertex[1]-camera[1])) / (camera[2] + vertex[2] + zOff) + camera[1]) * scale; // Y
+            }
+
+            return output;
+         };
+
+         var normalise = function(v){
+            var output = v.slice(0);
+
+            // calculate vector magnitude
+            var magnitude = Math.sqrt(output[0] * output[0] +
+                                      output[1] * output[1] +
+                                      output[2] * output[2]);
+
+            // normalise vector;
+            output[0] /= magnitude;
+            output[1] /= magnitude;
+            output[2] /= magnitude;
+
+            return output;
+         };
+
+         var calculateNormal = function(points, triangle){
+            var u = [points[triangle[1]][0] - points[triangle[0]][0],
+                     points[triangle[1]][1] - points[triangle[0]][1],
+                     points[triangle[1]][2] - points[triangle[0]][2]];
+
+            var v = [points[triangle[2]][0] - points[triangle[0]][0],
+                     points[triangle[2]][1] - points[triangle[0]][1],
+                     points[triangle[2]][2] - points[triangle[0]][2]];
+
+            u = normalise(u);
+            v = normalise(v);
+
+            // Calculate dot product.
+            var normal = [(u[1] * v[2]) - (u[2] * v[1]),
+                          (u[2] * v[0]) - (u[0] * v[2]),
+                          (u[0] * v[1]) - (u[1] * v[0])];
+
+            return normal;
+         };
+
+         var plotObject = function(original, shape, object, ctx){
+            ctx.strokeStyle = '#555';
+            ctx.lineWidth = 1;
+
+            for(var i = 0; i < object.triangles.length; i++){
+               var t = object.triangles[i];
+
+               var normal = calculateNormal(original, t);
+               var camVertex = normalise(camera);
+               var camAngle = camVertex[0] * normal[0] + camVertex[1] * normal[1] + camVertex[2] * normal[2];
+
+               if(camAngle > 0) {
+                  var lightVertex = normalise(light);
+                  var lightAngle = lightVertex[0] * normal[0] + lightVertex[1] * normal[1] + lightVertex[2] * normal[2];
+
+                  ctx.beginPath();
+
+                  ctx.moveTo(shape[t[0]][0], shape[t[0]][1]);
+                  for(var j=0; j < t.length; j++){
+                     ctx.lineTo(shape[t[j]][0], shape[t[j]][1]);
+                  }
+
+                  var ratio = ((lightAngle < 0 ? 0 : lightAngle * 220) + 35).toFixed(0);
+                  ctx.fillStyle = 'rgb(' + ratio + ',' + ratio + ',' + ratio + ')';
+                  ctx.strokeStyle = '#444';
+
+                  ctx.closePath();
+                  ctx.fill();
+                  ctx.stroke();
+               }
+            }
+         };
+
+         var sortByZIndex = function(transformedPoints, object){
+            object.triangles.sort(function(a,b){
+               pointA = transformedPoints[a[0]];
+               pointB = transformedPoints[b[0]];
+               return pointA[2] - pointB[2];
+            });
+         };
+
+         var plotShape = function(obj, ctx){
+            var transformedPoints = transform(obj.points, rotateMatrix(angle, angle, angle));
+            sortByZIndex(transformedPoints, obj);
+            var twoDPoints = project(transformedPoints, 160, 100, 0, 65.0);
+            plotObject(transformedPoints, twoDPoints, obj, ctx);
+         };
+
+         var clearCanvas = function(ctx){
+            ctx.fillStyle = '#000';
+            ctx.clearRect(0, 0, 320, 200);
+         };
+
+         var fixIndexing = function(obj){
+            if(obj){
+               // Correct for 1-based indexing in exported data.
+               for(var i=0; i < obj.triangles.length; i++) {
+                  for(var j=0; j < obj.triangles[i].length; j++)
+                     obj.triangles[i][j] -= 1;
+               }
+            }
+         };
+
+         fixIndexing(torusObject);
+         fixIndexing(chimpObject);
+
+         if(canv && canv.getContext){
+            var context = canv.getContext('2d');
+
+            if(context){
+               setInterval(function(){
+                  clearCanvas(context);
+
+                  switch(modelSelect.value){
+                     default:
+                     case '1':
+                        plotShape(sphereObject, context);
+                        info.innerText = 'Points: ' + sphereObject.points.length + ', Polys: ' + sphereObject.triangles.length;
+                        break;
+                     case '2':
+                        plotShape(torusObject, context);
+                        info.innerText = 'Points: ' + torusObject.points.length + ', Polys: ' + torusObject.triangles.length;
+                        break;
+                     case '3':
+                        plotShape(chimpObject, context);
+                        info.innerText = 'Points: ' + chimpObject.points.length + ', Polys: ' + chimpObject.triangles.length;
+                        break;
+                  }
+
+                  angle += .5;
+                  angle = angle % 360;
+               }, delay);
+            }
+         }
+      </script>
+   </body>
+</html>
