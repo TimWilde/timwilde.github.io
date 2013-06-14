@@ -9,7 +9,7 @@
    </head>
 
    <body>
-      <canvas id="myCanvas" width="640" height="480">
+      <canvas id="myCanvas" width="480" height="480">
          Sorry; your browser doesn't support canvas.
       </canvas>
       <span id="out" style="color: #fff;"></span>
@@ -292,12 +292,12 @@
                calculateCenter(transformedPoints, obj);
 
             var twoDPoints = project(transformedPoints);
-            plotObject(transformedPoints, twoDPoints, obj, 320, 240, 120.0, ctx);
+            plotObject(transformedPoints, twoDPoints, obj, 240, 240, 120.0, ctx);
          };
 
          var clearCanvas = function(ctx){
             ctx.fillStyle = '#000';
-            ctx.clearRect(0, 0, 640, 480);
+            ctx.clearRect(0, 0, 480, 480);
          };
 
          var fixIndexing = function(obj){
