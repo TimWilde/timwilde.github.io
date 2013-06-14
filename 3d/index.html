@@ -9,7 +9,7 @@
    </head>
 
    <body>
-      <canvas id="myCanvas" width="320" height="200">
+      <canvas id="myCanvas" width="640" height="480">
          Sorry; your browser doesn't support canvas.
       </canvas>
       <span id="out" style="color: #fff;"></span>
@@ -229,10 +229,8 @@
                   ctx.closePath();
                   if(fill()) ctx.fill();
 
-                  if(showEdges.checked || !fill()){
-                     ctx.strokeStyle = '#800';
-                     ctx.stroke();
-                  }
+                  ctx.strokeStyle = (showEdges.checked || !fill()) ? '#800' : ctx.fillStyle;
+                  ctx.stroke();
 
                   if(showNormals.checked){
                      var nXs = camera[2] * (object.normals[i][0] - camera[0]) / (camera[2] + object.normals[i][2]) + camera[0];
@@ -294,12 +292,12 @@
                calculateCenter(transformedPoints, obj);
 
             var twoDPoints = project(transformedPoints);
-            plotObject(transformedPoints, twoDPoints, obj, 160, 100, 60.0, ctx);
+            plotObject(transformedPoints, twoDPoints, obj, 320, 240, 120.0, ctx);
          };
 
          var clearCanvas = function(ctx){
             ctx.fillStyle = '#000';
-            ctx.clearRect(0, 0, 320, 200);
+            ctx.clearRect(0, 0, 640, 480);
          };
 
          var fixIndexing = function(obj){
