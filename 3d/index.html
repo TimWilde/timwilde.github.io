@@ -21,8 +21,7 @@
                <option value="1">Sphere</option>
                <option value="2">Torus</option>
                <option value="3">Monkey</option>
-               <option value="4">Logo</option>
-               <option value="5">Cog</option>
+               <option value="4">Cog</option>
             </select>
          </label>
 
@@ -70,7 +69,6 @@
       <script type="text/javascript" src="sphere.js"></script>
       <script type="text/javascript" src="torus.js"></script>
       <script type="text/javascript" src="monkey.js"></script>
-      <script type="text/javascript" src="logo.js"></script>
       <script type="text/javascript" src="cog.js"></script>
 
       <script type="text/javascript">
@@ -222,7 +220,7 @@
                   var ratio = ((lightAngle < 0 ? 0 : lightAngle * 220) + 35).toFixed(0);
                   ctx.fillStyle = 'rgb(' + ratio + ',' + ratio + ',' + ratio + ')';
 
-                  ctx.moveTo(xOff + shape[t[0]][0] * scale, yOff + shape[t[0]][1]*scale);
+                  ctx.moveTo(xOff + shape[t[0]][0] * scale, yOff + shape[t[0]][1] * scale);
                   for(var j=0; j < t.length; j++){
                      ctx.lineTo(xOff + (shape[t[j]][0] * scale), yOff + (shape[t[j]][1] * scale));
                   }
@@ -230,7 +228,7 @@
                   ctx.closePath();
                   if(fill()) ctx.fill();
 
-                  ctx.strokeStyle = (showEdges.checked || !fill()) ? ((camAngle > 0) ? '#800' : '#400') : ctx.fillStyle;
+                  ctx.strokeStyle = (showEdges.checked || !fill()) ? ((camAngle > 0) ? '#900' : '#400') : ctx.fillStyle;
                   ctx.stroke();
 
                   if(showNormals.checked){
@@ -241,7 +239,7 @@
                      var nYf = (camera[2] * ((object.normals[i][1] + ((normal[1] / scale) * normalSize)) - camera[1])) / (camera[2] + (object.normals[i][2] + ((normal[2] / scale) * normalSize))) + camera[1];
 
                      ctx.beginPath();
-                     ctx.strokeStyle = camAngle > 0 ? '#0b0' : '#040';
+                     ctx.strokeStyle = camAngle > 0 ? '#0b0' : '#050';
                      ctx.lineWidth = 3;
                      ctx.moveTo(xOff + (nXs * scale), yOff + (nYs * scale));
                      ctx.lineTo(xOff + (nXf * scale), yOff + (nYf * scale));
@@ -342,11 +340,6 @@
                   break;
 
                case '4':
-                  plotShape(logoObject, context);
-                  displayInfo(logoObject);
-                  break;
-
-               case '5':
                   plotShape(cogObject, context);
                   displayInfo(cogObject);
                   break;
