@@ -21,6 +21,8 @@
                <option value="1">Sphere</option>
                <option value="2">Torus</option>
                <option value="3">Monkey</option>
+               <option value="4">Logo</option>
+               <option value="5">Cog</option>
             </select>
          </label>
       </div>
@@ -57,6 +59,8 @@
       <script type="text/javascript" src="sphere.js"></script>
       <script type="text/javascript" src="torus.js"></script>
       <script type="text/javascript" src="monkey.js"></script>
+      <script type="text/javascript" src="logo.js"></script>
+      <script type="text/javascript" src="cog.js"></script>
 
       <script type="text/javascript">
          var identity = [[1,0,0,0],
@@ -207,8 +211,10 @@
                   ctx.closePath();
                   ctx.fill();
 
-                  ctx.strokeStyle = showEdges.checked ? '#444' : ctx.fillStyle;
-                  ctx.stroke();
+                  if(showEdges.checked){
+                     ctx.strokeStyle = showEdges.checked ? '#444' : ctx.fillStyle;
+                     ctx.stroke();
+                  }
 
                   if(showNormals.checked){
                      var nXs = camera[2] * (object.normals[i][0] - camera[0]) / (camera[2] + object.normals[i][2]) + camera[0];
@@ -281,6 +287,11 @@
             }
          };
 
+         var displayInfo = function(obj){
+            info.innerText = 'Points: ' + obj.points.length + ', polygons: ' + obj.triangles.length;
+         };
+
+         fixIndexing(cogObject);
          fixIndexing(cubeObject);
          fixIndexing(torusObject);
          fixIndexing(chimpObject);
@@ -296,22 +307,32 @@
                      default:
                      case '0':
                         plotShape(cubeObject, context);
-                        info.innerText = 'Points: ' + cubeObject.points.length + ', Polys: ' + cubeObject.triangles.length;
+                        displayInfo(cubeObject);
                         break;
 
                      case '1':
                         plotShape(sphereObject, context);
-                        info.innerText = 'Points: ' + sphereObject.points.length + ', Polys: ' + sphereObject.triangles.length;
+                        displayInfo(sphereObject);
                         break;
 
                      case '2':
                         plotShape(torusObject, context);
-                        info.innerText = 'Points: ' + torusObject.points.length + ', Polys: ' + torusObject.triangles.length;
+                        displayInfo(torusObject);
                         break;
 
                      case '3':
                         plotShape(chimpObject, context);
-                        info.innerText = 'Points: ' + chimpObject.points.length + ', Polys: ' + chimpObject.triangles.length;
+                        displayInfo(chimpObject);
+                        break;
+
+                     case '4':
+                        plotShape(logoObject, context);
+                        displayInfo(logoObject);
+                        break;
+
+                     case '5':
+                        plotShape(cogObject, context);
+                        displayInfo(cogObject);
                         break;
                   }
 
