@@ -29,6 +29,7 @@
          <label>
             Delay:
             <input type="number" id="delay" value="10" min="1" max="100" />
+            ms
          </label>
       </div>
       <div>
@@ -38,7 +39,12 @@
          </label>
 
          <label>
-            <input type="checkbox" id="showEdges" checked />
+            <input type="checkbox" id="fill" checked />
+            Solid
+         </label>
+
+         <label>
+            <input type="checkbox" id="showEdges" />
             Show edges
          </label>
       </div>
@@ -76,7 +82,7 @@
          var camera = [0, 0, 150];
          var light = [250,-250,500];
 
-         var angle = 1.0;
+         var angle = 0.0;
          var normalSize = 10.0;
 
          var drawing = false;
@@ -96,7 +102,11 @@
          };
 
          var delay = function(){
-            return document.getElementById('delay').value;
+            return parseInt(document.getElementById('delay').value);
+         };
+
+         var fill = function(){
+            return document.getElementById('fill').checked;
          };
 
          var rotateMatrix = function(x,y,z){
@@ -202,7 +212,7 @@
                var camVertex = normalise(camera);
                var camAngle = camVertex[0] * normal[0] + camVertex[1] * normal[1] + camVertex[2] * normal[2];
 
-               if(camAngle > 0) {
+               if(camAngle > 0 || !fill()) {
                   var lightVertex = normalise(light);
                   var lightAngle = lightVertex[0] * normal[0] + lightVertex[1] * normal[1] + lightVertex[2] * normal[2];
 
@@ -211,16 +221,16 @@
                   var ratio = ((lightAngle < 0 ? 0 : lightAngle * 220) + 35).toFixed(0);
                   ctx.fillStyle = 'rgb(' + ratio + ',' + ratio + ',' + ratio + ')';
 
-                  ctx.moveTo(xOff + (shape[t[0]][0] * scale), yOff + (shape[t[0]][1]*scale));
+                  ctx.moveTo(xOff + shape[t[0]][0] * scale, yOff + shape[t[0]][1]*scale);
                   for(var j=0; j < t.length; j++){
                      ctx.lineTo(xOff + (shape[t[j]][0] * scale), yOff + (shape[t[j]][1] * scale));
                   }
 
                   ctx.closePath();
-                  ctx.fill();
+                  if(fill()) ctx.fill();
 
-                  if(showEdges.checked){
-                     ctx.strokeStyle = showEdges.checked ? '#444' : ctx.fillStyle;
+                  if(showEdges.checked || !fill()){
+                     ctx.strokeStyle = '#800';
                      ctx.stroke();
                   }
 
@@ -342,7 +352,7 @@
                   break;
             }
 
-            angle += .5;
+            angle += 0.5;
             angle = angle % 360;
 
             setTimeout(renderSelectedModel, delay());
