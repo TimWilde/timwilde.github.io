@@ -4,7 +4,7 @@
       <title>Canvas demo</title>
       <style type="text/css" media="screen">
          body {background-color: #000;}
-         label, #info {color:#fff;}
+         label, #info, #count {color:#fff;}
       </style>
    </head>
 
@@ -63,7 +63,10 @@
             Rotate Z
          </label>
       </div>
-      <div id="info"></div>
+      <div>
+         <span id="info"></span>
+         <span id="count"></span>
+      </div>
 
       <script type="text/javascript" src="cube.js"></script>
       <script type="text/javascript" src="sphere.js"></script>
@@ -201,7 +204,7 @@
          };
 
          var plotObject = function(original, shape, object, xOff, yOff, scale, ctx){
-            ctx.lineWidth = 1;
+            var polysDrawn = 0;
 
             for(var i = 0; i < object.triangles.length; i++){
                var t = object.triangles[i];
@@ -211,6 +214,8 @@
                var camAngle = camVertex[0] * normal[0] + camVertex[1] * normal[1] + camVertex[2] * normal[2];
 
                if(camAngle > 0 || !fill()) {
+                  polysDrawn++;
+
                   var lightVertex = normalise(light);
                   var lightAngle = lightVertex[0] * normal[0] + lightVertex[1] * normal[1] + lightVertex[2] * normal[2];
 
@@ -247,6 +252,8 @@
                   }
                }
             }
+
+            document.getElementById('count').innerText = ' (' +polysDrawn + ' rendered)';
          };
 
          var sortByZIndex = function(transformedPoints, object){
