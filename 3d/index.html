@@ -18,7 +18,8 @@
             Model:
             <select id="model">
                <option value="0">Cube</option>
-               <option value="1">Sphere</option>
+               <option value="1">Icosphere</option>
+               <option value="5">UV Sphere</option>
                <option value="2">Torus</option>
                <option value="3">Monkey</option>
                <option value="4">Cog</option>
@@ -73,6 +74,7 @@
       <script type="text/javascript" src="torus.js"></script>
       <script type="text/javascript" src="monkey.js"></script>
       <script type="text/javascript" src="cog.js"></script>
+      <script type="text/javascript" src="uv-sphere.js"></script>
 
       <script type="text/javascript">
          var identity = [[1,0,0,0],
@@ -200,7 +202,7 @@
                           (u[2] * v[0]) - (u[0] * v[2]),
                           (u[0] * v[1]) - (u[1] * v[0])];
 
-            return normal;
+            return normalise(normal);
          };
 
          var plotObject = function(original, shape, object, xOff, yOff, scale, ctx){
@@ -350,6 +352,11 @@
                   plotShape(cogObject, context);
                   displayInfo(cogObject);
                   break;
+
+               case '5':
+                  plotShape(uvSphereObject, context);
+                  displayInfo(uvSphereObject);
+                  break;
             }
 
             angle += 0.5;
@@ -362,6 +369,7 @@
          fixIndexing(cubeObject);
          fixIndexing(torusObject);
          fixIndexing(chimpObject);
+         fixIndexing(uvSphereObject);
 
          if(canv && canv.getContext){
             var context = canv.getContext('2d');
