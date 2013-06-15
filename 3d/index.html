@@ -194,9 +194,6 @@
                      points[triangle[2]][1] - points[triangle[0]][1],
                      points[triangle[2]][2] - points[triangle[0]][2]];
 
-            u = normalise(u);
-            v = normalise(v);
-
             // Calculate dot product.
             var normal = [(u[1] * v[2]) - (u[2] * v[1]),
                           (u[2] * v[0]) - (u[0] * v[2]),
