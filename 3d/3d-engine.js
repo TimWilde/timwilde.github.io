@@ -1,16 +1,16 @@
+"use strict"
+
 var identity = [[1,0,0,0],
                 [0,1,0,0],
                 [0,0,1,0],
                 [0,0,0,1]];
 
 var camera = [0, 0, 150];
-var light = [250,-250,500];
-
-var angle = 0.0;
+var light = [100,-50,150];
 var normalSize = 15.0;
 
 var drawing = false;
-var red = 255, green = 255, blue = 255;
+var red = 127, green = 0, blue = 0;
 
 var canv = document.getElementById('myCanvas');
 var out = document.getElementById('out');
@@ -127,6 +127,53 @@ var calculateNormal = function(points, triangle){
    return normalise(normal);
 };
 
+var dot = function(l,r){
+   return l[0] * r[0] +
+          l[1] * r[1] +
+          l[2] * r[2];
+};
+
+var phong = function(normal, triangle, points){
+   var lightColor = 255;
+   var ambient = parseFloat(document.getElementById('ambient').value);
+   var diffuse = parseFloat(document.getElementById('diffuse').value);
+   var shininess = parseFloat(document.getElementById('shininess').value);
+   var specular = parseFloat(document.getElementById('specular').value);
+
+   var x=0, y=0, z=0;
+   for(var i=0; i<triangle.length; i++){
+      x += points[triangle[i]][0];
+      y += points[triangle[i]][1];
+      z += points[triangle[i]][2];
+   }
+
+   var facePos = [ x, y, z ];
+
+   var color = ambient * lightColor;
+   var lightDir = normalise([
+      light[0] - facePos[0],
+      light[1] - facePos[1],
+      light[2] - facePos[2]
+   ]);
+
+   color += dot(lightDir, normal) * diffuse * lightColor;
+   var cameraPos = normalise(camera);
+   var viewDir = normalise([
+      cameraPos[0] - facePos[0],
+      cameraPos[1] - facePos[1],
+      cameraPos[2] - facePos[2]
+   ]);
+   var halfVec = normalise([
+      light[0] + viewDir[0],
+      light[1] + viewDir[1],
+      light[2] + viewDir[2]
+   ]);
+
+   color += Math.pow(dot(normal, halfVec), shininess) * specular * lightColor;
+
+   return color;
+};
+
 var plotObject = function(original, shape, object, xOff, yOff, scale, ctx){
    var polysDrawn = 0;
 
@@ -141,17 +188,11 @@ var plotObject = function(original, shape, object, xOff, yOff, scale, ctx){
          polysDrawn++;
 
          var lightVertex = normalise(light);
-         var lightAngle = lightVertex[0] * normal[0] + lightVertex[1] * normal[1] + lightVertex[2] * normal[2];
-         lightAngle = lightAngle < 0 ? 0 : lightAngle;
+         var lightIntensity = dot(normal, lightVertex);
+         lightIntensity = lightIntensity < 0 ? 0 : lightIntensity;
 
          ctx.lineWidth = 1;
          ctx.beginPath();
-
-         var redRatio = (((red * 0.9) * lightAngle) + (red * 0.1)).toFixed(0);
-         var greenRatio = (((green * 0.9) * lightAngle) + (green * 0.1)).toFixed(0);
-         var blueRatio = (((blue * 0.9) * lightAngle) + (blue * 0.1)).toFixed(0);
-
-         ctx.fillStyle = 'rgb(' + redRatio + ',' + greenRatio + ',' + blueRatio + ')';
 
          ctx.moveTo(xOff + shape[t[0]][0] * scale, yOff + shape[t[0]][1] * scale);
          for(var j=0; j < t.length; j++){
@@ -159,7 +200,12 @@ var plotObject = function(original, shape, object, xOff, yOff, scale, ctx){
          }
 
          ctx.closePath();
-         if(fill()) ctx.fill();
+         if(fill()){
+            ctx.fillStyle = 'rgb(' + (red + phong(normal, t, original)).toFixed(0) + ','
+                                + (green + phong(normal, t, original)).toFixed(0) + ','
+                                + (blue + phong(normal, t, original)).toFixed(0) + ')';
+            ctx.fill();
+         }
 
          ctx.strokeStyle = (showEdges.checked || !fill()) ? ((camAngle > 0) ? '#900' : '#400') : ctx.fillStyle;
          ctx.stroke();
@@ -227,7 +273,10 @@ var plotShape = function(obj, ctx){
       calculateCenter(transformedPoints, obj);
 
    var twoDPoints = project(transformedPoints);
-   plotObject(transformedPoints, twoDPoints, obj, 240, 240, 120.0, ctx);
+   plotObject(transformedPoints, twoDPoints, obj, 240, 240, 120, ctx);
+   var twoDLight = project(light);
+   ctx.FillStyle = '#fff';
+   ctx.fillRect(twoDLight[0], twoDLight[1], 2, 2);
 };
 
 var clearCanvas = function(ctx){
@@ -295,22 +344,45 @@ var renderSelectedModel = function(){
    if(rotY.checked) yRot.value = (parseFloat(yRot.value) + 0.5) % 360;
    if(rotZ.checked) zRot.value = (parseFloat(zRot.value) + 0.5) % 360;
 
-   angle += 0.5;
-   angle = angle % 360;
-
    setTimeout(renderSelectedModel, delay());
 };
 
-fixIndexing(cogObject);
-fixIndexing(cubeObject);
-fixIndexing(torusObject);
-fixIndexing(chimpObject);
-fixIndexing(uvSphereObject);
+var calculateScale = function(object){
+   var maxMagnitude = 0;
+
+   for(var i=0; i < object.points.length; i++){
+      var magnitude = Math.abs( Math.sqrt( object.points[i][0] * object.points[i][0] +
+                                           object.points[i][1] * object.points[i][1] +
+                                           object.points[i][2] * object.points[i][2] ) );
+
+      if(magnitude > maxMagnitude)
+         maxMagnitude = magnitude;
+   }
+
+   object.scale = (camera[2] * Math.sin(getRadians(90))) / maxMagnitude;
+};
+
+var initialize = function(){
+   // Exported model data has 1-based array indexes.
+   fixIndexing(cogObject);
+   fixIndexing(cubeObject);
+   fixIndexing(torusObject);
+   fixIndexing(chimpObject);
+   fixIndexing(uvSphereObject);
+
+   calculateScale(cubeObject);
+   calculateScale(sphereObject);
+   calculateScale(uvSphereObject);
+   calculateScale(torusObject);
+   calculateScale(chimpObject);
+   calculateScale(cogObject);
+};
 
 if(canv && canv.getContext){
    var context = canv.getContext('2d');
 
    if(context){
+      initialize();
       renderSelectedModel();
    }
 }
