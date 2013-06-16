@@ -3,7 +3,7 @@
    <head>
       <title>Canvas demo</title>
       <style type="text/css" media="screen">
-         body {background-color: #000;}
+         body {background-color: #000; color: #fff;}
          label, #info, #count {color:#fff;}
       </style>
    </head>
@@ -33,40 +33,51 @@
          </label>
       </div>
       <div>
-         <label>
-            <input type="checkbox" id="normals" value="1" />
-            Show normals
-         </label>
-
+         Draw:
          <label>
             <input type="checkbox" id="fill" checked />
             Solid
          </label>
 
          <label>
+            <input type="checkbox" id="normals" value="1" />
+            Normals
+         </label>
+
+         <label>
             <input type="checkbox" id="showEdges" />
-            Show edges
+            Edges
          </label>
       </div>
       <div>
+         Rotate:
          <label>
             <input id="rotX" type="checkbox" checked />
-            Rotate X
+            X
          </label>
+         <input type="number" id="xRot" value="0" min="0" max="360" step="0.5" />
 
          <label>
             <input id="rotY" type="checkbox" checked />
-            Rotate Y
+            Y
          </label>
+         <input type="number" id="yRot" value="0" min="0" max="360" step="0.5" />
 
          <label>
             <input id="rotZ" type="checkbox" checked />
-            Rotate Z
+            Z
          </label>
+         <input type="number" id="zRot" value="0" min="0" max="360" step="0.5" />
       </div>
       <div>
          <span id="info"></span>
          <span id="count"></span>
+      </div>
+      <div>
+         <button onclick="setColor(255,255,255);">White</button>
+         <button onclick="setColor(255,0,0);">Red</button>
+         <button onclick="setColor(0,255,0);">Green</button>
+         <button onclick="setColor(0,0,255);">Blue</button>
       </div>
 
       <script type="text/javascript" src="cube.js"></script>

@@ -10,6 +10,7 @@ var angle = 0.0;
 var normalSize = 15.0;
 
 var drawing = false;
+var red = 255, green = 255, blue = 255;
 
 var canv = document.getElementById('myCanvas');
 var out = document.getElementById('out');
@@ -20,6 +21,9 @@ var info = document.getElementById('info');
 var rotX = document.getElementById('rotX');
 var rotY = document.getElementById('rotY');
 var rotZ = document.getElementById('rotZ');
+var xRot = document.getElementById('xRot');
+var yRot = document.getElementById('yRot');
+var zRot = document.getElementById('zRot');
 
 var getRadians = function(degrees){
    return degrees * (Math.PI / 180);
@@ -115,7 +119,7 @@ var calculateNormal = function(points, triangle){
             points[triangle[2]][1] - points[triangle[0]][1],
             points[triangle[2]][2] - points[triangle[0]][2]];
 
-   // Calculate dot product.
+   // Calculate cross product.
    var normal = [(u[1] * v[2]) - (u[2] * v[1]),
                  (u[2] * v[0]) - (u[0] * v[2]),
                  (u[0] * v[1]) - (u[1] * v[0])];
@@ -138,12 +142,16 @@ var plotObject = function(original, shape, object, xOff, yOff, scale, ctx){
 
          var lightVertex = normalise(light);
          var lightAngle = lightVertex[0] * normal[0] + lightVertex[1] * normal[1] + lightVertex[2] * normal[2];
+         lightAngle = lightAngle < 0 ? 0 : lightAngle;
 
          ctx.lineWidth = 1;
          ctx.beginPath();
 
-         var ratio = ((lightAngle < 0 ? 0 : lightAngle * 220) + 35).toFixed(0);
-         ctx.fillStyle = 'rgb(' + ratio + ',' + ratio + ',' + ratio + ')';
+         var redRatio = (((red * 0.9) * lightAngle) + (red * 0.1)).toFixed(0);
+         var greenRatio = (((green * 0.9) * lightAngle) + (green * 0.1)).toFixed(0);
+         var blueRatio = (((blue * 0.9) * lightAngle) + (blue * 0.1)).toFixed(0);
+
+         ctx.fillStyle = 'rgb(' + redRatio + ',' + greenRatio + ',' + blueRatio + ')';
 
          ctx.moveTo(xOff + shape[t[0]][0] * scale, yOff + shape[t[0]][1] * scale);
          for(var j=0; j < t.length; j++){
@@ -212,7 +220,7 @@ var calculateCenter = function(points, obj){
 };
 
 var plotShape = function(obj, ctx){
-   var transformedPoints = transform(obj.points, rotateMatrix(rotX.checked ? angle : 0, rotY.checked ? angle : 0, rotZ.checked ? angle : 0));
+   var transformedPoints = transform(obj.points, rotateMatrix(parseFloat(xRot.value), parseFloat(yRot.value), parseFloat(zRot.value)));
    sortByZIndex(transformedPoints, obj);
 
    if(showNormals.checked)
@@ -239,6 +247,12 @@ var fixIndexing = function(obj){
 
 var displayInfo = function(obj){
    info.innerText = 'Points: ' + obj.points.length + ', polygons: ' + obj.triangles.length;
+};
+
+var setColor = function(r, g, b){
+   red = parseInt(r);
+   green = parseInt(g);
+   blue = parseInt(b);
 };
 
 var renderSelectedModel = function(){
@@ -276,6 +290,10 @@ var renderSelectedModel = function(){
          displayInfo(uvSphereObject);
          break;
    }
+
+   if(rotX.checked) xRot.value = (parseFloat(xRot.value) + 0.5) % 360;
+   if(rotY.checked) yRot.value = (parseFloat(yRot.value) + 0.5) % 360;
+   if(rotZ.checked) zRot.value = (parseFloat(zRot.value) + 0.5) % 360;
 
    angle += 0.5;
    angle = angle % 360;
