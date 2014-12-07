@@ -312,7 +312,7 @@ var setColor = function(r, g, b){
 
 var lastCalled;
 
-var calculateFPS = function(){
+var calculateFPS = function(ctx){
    if(!lastCalled){
       fps.innerText = 0;
    } else {
@@ -320,6 +320,9 @@ var calculateFPS = function(){
       var current = 1/delta;
 
       fps.innerText = Math.floor(current);
+
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(canv.width - 5, canv.height - current, 5, current );
    }
 
    lastCalled = new Date();
@@ -359,7 +362,7 @@ var renderSelectedModel = function(){
 
    plotShape(selectedModel, context);
    displayInfo(selectedModel);
-   calculateFPS();
+   calculateFPS(context);
 
    if(rotX.checked) xRot.value = (parseFloat(xRot.value) + 0.5) % 360;
    if(rotY.checked) yRot.value = (parseFloat(yRot.value) + 0.5) % 360;
