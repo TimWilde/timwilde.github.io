@@ -13,6 +13,7 @@ var rotZ = document.getElementById('rotZ');
 var xRot = document.getElementById('xRot');
 var yRot = document.getElementById('yRot');
 var zRot = document.getElementById('zRot');
+var fps = document.getElementById('fps');
 
 var identity = [[1,0,0,0],
                 [0,1,0,0],
@@ -27,10 +28,6 @@ var red = 127, green = 0, blue = 0;
 
 var getRadians = function(degrees){
    return degrees * (Math.PI / 180);
-};
-
-var delay = function(){
-   return parseInt(document.getElementById('delay').value);
 };
 
 var fill = function(){
@@ -204,7 +201,7 @@ var plotObject = function(original, shape, object, xOff, yOff, scale, ctx){
          ctx.beginPath();
 
          ctx.moveTo(xOff + shape[t[0]][0] * scale, yOff + shape[t[0]][1] * scale);
-         for(var j=0; j < t.length; j++){
+         for(var j=1; j < t.length; j++){
             ctx.lineTo(xOff + (shape[t[j]][0] * scale), yOff + (shape[t[j]][1] * scale));
          }
 
@@ -313,47 +310,62 @@ var setColor = function(r, g, b){
    blue = parseInt(b);
 };
 
+var lastCalled;
+
+var calculateFPS = function(){
+   if(!lastCalled){
+      fps.innerText = 0;
+   } else {
+      var delta = (new Date().getTime() - lastCalled) / 1000;
+      var current = 1/delta;
+
+      fps.innerText = Math.floor(current);
+   }
+
+   lastCalled = new Date();
+};
+
 var renderSelectedModel = function(){
    clearCanvas(context);
+
+   var selectedModel = cubeObject;
 
    switch(modelSelect.value){
       default:
       case '0':
-         plotShape(cubeObject, context);
-         displayInfo(cubeObject);
+         selectedModel = cubeObject;
          break;
 
       case '1':
-         plotShape(sphereObject, context);
-         displayInfo(sphereObject);
+         selectedModel = sphereObject;
          break;
 
       case '2':
-         plotShape(torusObject, context);
-         displayInfo(torusObject);
+         selectedModel = torusObject;
          break;
 
       case '3':
-         plotShape(chimpObject, context);
-         displayInfo(chimpObject);
+         selectedModel = chimpObject;
          break;
 
       case '4':
-         plotShape(cogObject, context);
-         displayInfo(cogObject);
+         selectedModel = cogObject;
          break;
 
       case '5':
-         plotShape(uvSphereObject, context);
-         displayInfo(uvSphereObject);
+         selectedModel = uvSphereObject;
          break;
    }
+
+   plotShape(selectedModel, context);
+   displayInfo(selectedModel);
+   calculateFPS();
 
    if(rotX.checked) xRot.value = (parseFloat(xRot.value) + 0.5) % 360;
    if(rotY.checked) yRot.value = (parseFloat(yRot.value) + 0.5) % 360;
    if(rotZ.checked) zRot.value = (parseFloat(zRot.value) + 0.5) % 360;
 
-   setTimeout(renderSelectedModel, delay());
+   requestAnimationFrame(renderSelectedModel);
 };
 
 var calculateScale = function(object){
