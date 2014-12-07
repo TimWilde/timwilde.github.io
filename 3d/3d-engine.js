@@ -220,11 +220,11 @@ var plotObject = function(original, shape, object, xOff, yOff, scale, ctx){
          ctx.stroke();
 
          if(showNormals.checked){
-            var nXs = object.scale * (object.normals[i][0] - camera[0]) / (camera[2] + object.normals[i][2]);
-            var nYs = object.scale * (object.normals[i][1] - camera[1]) / (camera[2] + object.normals[i][2]);
+            var nXs = object.scale * (object.normals[i][0] + camera[0]) / (camera[2] - object.normals[i][2]);
+            var nYs = object.scale * (object.normals[i][1] + camera[1]) / (camera[2] - object.normals[i][2]);
 
-            var nXf = (object.scale * (object.normals[i][0] + (normal[0] / object.scale) * normalSize)) / (camera[2] + (object.normals[i][2] + ((normal[2] / object.scale) * normalSize)));
-            var nYf = (object.scale * (object.normals[i][1] + (normal[1] / object.scale) * normalSize)) / (camera[2] + (object.normals[i][2] + ((normal[2] / object.scale) * normalSize)));
+            var nXf = (object.scale * (object.normals[i][0] + (normal[0] / object.scale) * normalSize)) / (camera[2] - (object.normals[i][2] + ((normal[2] / object.scale) * normalSize)));
+            var nYf = (object.scale * (object.normals[i][1] + (normal[1] / object.scale) * normalSize)) / (camera[2] - (object.normals[i][2] + ((normal[2] / object.scale) * normalSize)));
 
             ctx.beginPath();
             ctx.strokeStyle = visible ? '#0b0' : '#050';
