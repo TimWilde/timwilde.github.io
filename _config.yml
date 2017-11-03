@@ -1,0 +1,27 @@
+# Permalinks
+permalink:           pretty
+
+# Setup
+title:               Tim Wilde
+tagline:             'Developer'
+description:         'A reserved <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that places the utmost gravity on content with a hidden drawer. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
+url:                 http://timwil.de
+baseurl:             ''
+paginate:            5
+
+# About/contact
+author:
+  name:              Tim Wilde
+  url:               https://twitter.com/timwilde
+  email:             blog@timwil.de
+
+# Custom vars
+version:            0.0.1
+contact:
+  github:           http://github.com/timwilde
+  twitter:          http://twitter.com/timwilde
+
+plugins:
+ - jekyll-paginate
+ - jekyll-gist
+ - jekyll-sitemap
