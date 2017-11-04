@@ -4,10 +4,6 @@
 
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
-  <div class="sidebar-item">
-    <p>{{ site.description }}</p>
-  </div>
-
   <nav class="sidebar-nav">
     <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/">Home</a>
 
@@ -28,12 +24,10 @@
     <a class="sidebar-nav-item" href="{{ site.baseurl }}3d/">Javascript 3D demo</a>
     <a class="sidebar-nav-item" href="{{ site.contact.twitter }}">Twitter</a>
     <a class="sidebar-nav-item" href="{{ site.contact.github }}">GitHub</a>
-    <span class="sidebar-nav-item">Currently v{{ site.version }}</span>
   </nav>
 
   <div class="sidebar-item">
-    <p>
-      &copy; {{ site.time | date: '%Y' }}. All rights reserved.
-    </p>
+    <p>{{ site.description }}</p>
+    <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>
   </div>
 </div>
