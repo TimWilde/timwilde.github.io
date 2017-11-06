@@ -4,7 +4,7 @@ permalink:           pretty
 # Setup
 title:               Tim Wilde
 tagline:             'Developer'
-description:         'Polyglot programmer, Azure administrator, container cattleman, and VSTS wrangler-in-training.<br/><br/>I write code for mobile, web, desktop, services, etc.'
+description:         "I write code for all sorts of platforms including web, services, mobile, desktop, IoT, etc. This blog is about the things I learn along the way"
 url:                 http://timwil.de
 baseurl:             ''
 paginate:            5
@@ -16,7 +16,6 @@ author:
   email:             blog@timwil.de
 
 # Custom vars
-version:            0.0.1
 contact:
   github:           http://github.com/timwilde
   twitter:          http://twitter.com/timwilde
