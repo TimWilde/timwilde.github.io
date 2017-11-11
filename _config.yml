@@ -4,21 +4,26 @@ permalink:           pretty
 # Setup
 title:               Tim Wilde
 tagline:             'Developer'
-description:         "I write code for all sorts of platforms including web, services, mobile, desktop, IoT, etc. This blog is about the things I learn along the way"
+description:         "I'm a full-stack, polyglot developer with a penchant for learning. I write code for all sorts of platforms including web, mobile, services, desktop, IoT, etc. This blog is about the things I learn along the way."
 url:                 http://timwil.de
 baseurl:             ''
 paginate:            5
 
 # About/contact
 author:
-  name:              Tim Wilde
-  url:               https://twitter.com/timwilde
-  email:             blog@timwil.de
+  name:             Tim Wilde
+  url:              https://twitter.com/timwilde
+  email:            blog@timwil.de
+  gravatar:         https://www.gravatar.com/avatar/1c1ff25a3607719a16782ef5bc169422
+
+service:
+  disqus:           https://timwilde.disqus.com
 
 # Custom vars
 contact:
-  github:           http://github.com/timwilde
-  twitter:          http://twitter.com/timwilde
+  twitter:          https://twitter.com/timwilde
+  github:           https://github.com/timwilde
+  google+:          https://plus.google.com/107825797412740370706
 
 plugins:
  - jekyll-paginate
