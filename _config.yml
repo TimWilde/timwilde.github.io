@@ -23,7 +23,6 @@ service:
 contact:
   twitter:          https://twitter.com/timwilde
   github:           https://github.com/timwilde
-  google+:          https://plus.google.com/107825797412740370706
 
 plugins:
  - jekyll-paginate
