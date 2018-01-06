@@ -350,10 +350,22 @@ export class PredicatedOn extends Trait {
    constructor(predicate) {
       super()
       this.predicate = predicate
+      this.active = false
+   }
+
+   init(actor) {
+      super.init(actor)
+      actor.registerForSignals(MouseClick.name)
+   }
+
+   signal(trait) {
+      if (trait instanceof MouseClick) {
+         this.active = true
+      }
    }
 
    update(actor, timeDelta, actors) {
-      if (this.predicate() === false) {
+      if (this.active && this.predicate() === false) {
          actor.game.removeLevelPiece(actor)
          this.alert()
       }
