@@ -1,0 +1,118 @@
+@font-face {
+   font-family: "blocks";
+   src: url("KenneyBlocks.ttf");
+}
+
+@font-face {
+   font-family: "mini";
+   src: url("KenneyMiniSquare.ttf");
+}
+
+html, body {
+   overflow-x: hidden;
+}
+
+body {
+   margin: 0;
+   position: relative;
+   background-color: #000;
+   color: #fff;
+}
+
+h1 {
+   font-family: blocks, sans-serif;
+   text-align: center;
+   font-size: 300%;
+}
+
+a {
+   color: blue;
+}
+
+#starter {
+   z-index: 10;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(192,192,192,0.75);
+}
+
+#notice {
+   position: relative;
+   width: 75%;
+   margin: 1em auto;
+   background-color: #000;
+
+   text-align: center;
+   border-radius: 8px;
+   padding: 1em 0;
+}
+
+button#play {
+   font-size: 100%;
+   border: 0;
+   background-color: #0f0;
+   color: #000;
+   padding: 2em;
+}
+
+button#play:disabled {
+   background-color: #ddd
+}
+
+#notice * {
+   font-family: mini, sans-serif;
+}
+
+#footer {
+   font-family: mini, sans-serif;
+   text-align: center;
+}
+
+#fps {
+   text-align: center;
+}
+
+#debug {
+   font-family: mini, Courier New, Courier, monospace
+}
+
+#screen {
+   display: block;
+   margin: auto;
+   border: solid 2px #fff;
+   border-width: 2px 2px 0 2px;
+   width: 960px;
+   height: 720px;
+   image-rendering: pixelated;
+   cursor: none;
+}
+
+/* Disable pull to reload */
+.wrapper {
+   /* Break the flow */
+   position: absolute;
+   top: 0px;
+ 
+   /* Give them all the available space */
+   width: 100%;
+   height: 100%;
+ 
+   /* Remove the margins if any */
+   margin: 0;
+ 
+   /* Allow them to scroll down the document */
+   overflow-y: hidden;
+ }
+ 
+ .body {
+   /* Sending body at the bottom of the stack */
+   z-index: 1;
+ }
+ 
+ .wrapper {
+   /* Making the wrapper stack above the body */
+   z-index: 2;
+ }
