@@ -24,6 +24,6 @@ As everything is [loaded through a module script tag](https://matthewphillips.in
 
 It's not quite finished (there's only one playable level at the moment) but it is quite fun. The code isn't optimised, so there is the occasional slowdown when garbage collection kicks in, but I have a plan for that and I'll be improving the code in the future.
 
-While I wrote the code, the sounds, music and the font are from various sources, which can be found in the [credits](/breakanoid/CREDITS).
+While I wrote the code, the sounds, music and the font are from various sources, which can be found in the [credits](https://github.com/TimWilde/timwilde.github.io/blob/master/breakanoid/CREDITS.md).
 
 So go and [play the game](/breakanoid/), or poke around in [the code](https://github.com/TimWilde/timwilde.github.io/blob/master/breakanoid). Let me know what you think below.
