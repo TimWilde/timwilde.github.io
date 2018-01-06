@@ -1,4 +1,4 @@
-# Credits
+# Breakanoid Credits
 
 This game wouldn't be as fun without a lot of help along the way.
 
