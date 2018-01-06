@@ -9,6 +9,9 @@ url:                 http://timwil.de
 baseurl:             ''
 paginate:            5
 
+# Exclusions
+exclude:            ['/breakanoid/CREDITS.md']
+
 # About/contact
 author:
   name:             Tim Wilde
