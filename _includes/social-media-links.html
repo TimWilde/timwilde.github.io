@@ -1,0 +1,5 @@
+{%- assign social_media_links = "" | split: ' ' %}
+{%- for contact in site.contact %}
+  {%- capture link %}<a target='_blank' href='{{ contact[1] }}'>{{ contact[0] }}</a>{%- endcapture %}
+  {%- assign social_media_links = social_media_links | push: link %}
+{%- endfor -%}

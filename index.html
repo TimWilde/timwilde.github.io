@@ -1,65 +1,38 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>TimWil.de</title>
-    <style type="text/css">
-      @import url(http://css.if-host.co.uk/reset.css);
-      @import url(http://fonts.googleapis.com/css?family=Snippet&v2);
-      root {
-        display: block;
-      }
-      body {
-        background-color: darkgrey;
-        font-family: 'Snippet', sans-serif;
-      }
-      #main {
-        margin: 180px auto 0;
-        text-align: center;
-        border-radius: 25px;
-        background-color: #fafafa;
-        width: 400px;
-        padding: 50px;
-        text-align: center;
-        box-shadow: 12px 20px 35px #888;
-        position: relative;
-      }
-      #main h1 {
-        font-weight: bold;
-        font-size: 28px;
-        margin-bottom: 0.25em;
-      }
-      #main h1 span {
-        padding-left: 12px;
-        color: #0a0a0a;
-      }
-      #tag {
-        position: absolute;
-        left: 100%;
-        top:40px;
-        background-color: #33ccff;
-        padding: 6px;
-        border-radius: 0 6px 6px 0;
-        box-shadow: inherit;
-        border-left: 1px solid #30c0f0;
-      }
-      #copyright {
-        padding: 12px 3px 3px 3px;
-        font-size: 12px;
-        text-align: center;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="main">
-      <h1>Tim<span>Wil.de</span></h1>
-      <div id="tag">
-        <a href="http://twitter.com/timwilde" title="@timwilde on Twitter">
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAYCAYAAACbU/80AAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sHGBQmKpDqpHIAAAHTSURBVEjH3Za9SxxRFMXv3V21sBUrsUhhp41lQEsLxT9CBIsUKUKaFAZr7dJoIVrZiNjZRbDWTlAIqQIbshBQSWF09fwsfAPjZGb3zbix8MAwX++d++559+OZ9QjAk3dJUfMavTLu7gZMmtmwmU2a2ZaZNe2lACzxCIX7Zsy8Wt5HSTNF0hYYHwfWzYxw/QD6AI/lyBJ+CV7sA1OdpAcawE3KczLPC6UWEUjHSLNJ3yTN5akCvJfS9shMFcBslT2dBq4zHv0F3kry1Lhb4jAYmxkJ8RHQLpC1GaRfJB6fyyqwEYxm9VXQ9hdwlvO/aCvOUtwjwFChcUkGDEg67EJKRexJqncMzOQnsALc0RucA/PAG2CwTDqqRwtoS7oBDiR519SU5JJ2CgKxLFrBqYEqKdkPnD7T+7U8bo9ZgKRhd2+FMusVe8WIuzfd/V+ZY9on8AH4XtLrZMuWu5EvAPVODQgYBe5LxIEye1+cbpJqkk4krSQdLKXQuKRjSVVS8apU0AFfQ3G5An6HLlc2A5ICdQg0qgTLx2cWnj/Au0rngJTsdWAXuMiUW+X0BMKYn8Dq/zhqTQDbwGVQJrnuQzP6FFVWC+Axh83Uey0cZHH3tr0GPABvgkw4uwrLqgAAAABJRU5ErkJggg==" width="32" alt="@timwilde on Twitter" />
-        </a>
-      </div>
-    </div>
-    <p id="copyright">&copy; 2013 all rights reserved.</p>
-    <script type="text/javascript" src="js/google-analytics.js"></script>
-  </body>
-</html>
+---
+layout: default
+title: Home
+---
+<div class="posts">
+  {%- for post in paginator.posts %}
+  <div class="post">
+    <h1 class="post-title">
+      <a href="{{ site.baseurl }}{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h1>
+
+    <span class="post-date">{{ post.date | date_to_string }}</span>
+    {{ post.excerpt }}
+    <a href="{{ site.baseurl }}{{ post.url }}">Read the full post &raquo;</a>
+  </div>
+  {%- endfor %}
+</div>
+
+<div class="pagination">
+  {%- if paginator.next_page %}
+    <a class="pagination-item older" href="{{ site.baseurl }}/page{{paginator.next_page}}">Older</a>
+  {%- else %}
+    <span class="pagination-item older">Older</span>
+  {%- endif %}
+
+  {%- if paginator.previous_page %}
+    {%- if paginator.page == 2 %}
+      <a class="pagination-item newer" href="{{ site.baseurl }}/">Newer</a>
+    {%- else %}
+      <a class="pagination-item newer" href="{{ site.baseurl }}/page{{paginator.previous_page}}">Newer</a>
+    {%- endif %}
+  {%- else %}
+    <span class="pagination-item newer">Newer</span>
+  {%- endif %}
+</div>
+

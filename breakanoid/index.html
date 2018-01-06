@@ -1,0 +1,45 @@
+<html>
+
+<head>
+   <title>Breakanoid</title>
+   <link rel="stylesheet" href="styling.css" />
+</head>
+
+<body id="body">
+   <div id="starter">
+      <div id="notice">
+         <h1>Breakanoid</h1>
+         <p>Move the mouse or swipe to move the paddle</p>
+         <button id="play">Play Breakanoid &raquo;</button>
+         <p>(Note: music and SFX!)</p>
+      </div>
+   </div>
+
+   <div class="wrapper">
+      <h1>Breakanoid</h1>
+
+      <canvas width="320px" height="240px" id="screen"></canvas>
+
+      <div id="footer">
+         <p>
+            Lives: <span id="lives"></span> -
+            Score: <span id="score"></span> -
+            FPS: <span id="fps"></span>
+         </p>
+         <p id="debug"></p>
+      </div>
+   </div>
+
+   <audio id="Bounce" src="bounce.mp3" preload="auto" volume="0" />
+   <audio id="Jump" src="jump.wav" preload="auto" volume="0" />
+   <audio id="Score" src="score.wav" preload="auto" volume="0" />
+   <audio id="Fail" src="fail.wav" preload="auto" volume="0" />
+   <audio id="LevelComplete" src="level-complete.mp3" preload="auto" volume="0" />
+   <audio id="GameOver" src="game-over.wav" preload="auto" volume="0" />
+
+   <script type="module" src="src/game.js"></script>
+
+   <script src="/public/js/google-analytics.js"></script>
+</body>
+
+</html>

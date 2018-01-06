@@ -1,0 +1,11 @@
+div.gravatar img {
+    margin: 1rem auto;
+}
+
+.sidebar-nav-item {
+    text-transform: capitalize;
+}
+
+.center {
+   margin: auto;
+}
