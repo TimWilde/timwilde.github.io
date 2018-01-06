@@ -1,6 +1,8 @@
+{%- if page.attachments %}
 <a id="attachments"></a><h2>Attachments</h2>
 <ul>
 {%- for attach in page.attachments %}
     <li><a href='{{ site.url }}/attachments{{ page.id }}/{{ attach }}'>{{ attach }}</a></li>
 {%- endfor %}
 </ul>
+{%- endif %}

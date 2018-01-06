@@ -5,3 +5,7 @@ div.gravatar img {
 .sidebar-nav-item {
     text-transform: capitalize;
 }
+
+.center {
+   margin: auto;
+}
