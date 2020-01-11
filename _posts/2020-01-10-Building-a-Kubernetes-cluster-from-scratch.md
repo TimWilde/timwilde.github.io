@@ -34,7 +34,7 @@ There are a few constraints too:
 - I really don't want to take a massive hit for power with this but it still has to run 24/7
 - As much as I'd love a 42U rack in the garage, I realistically just don't have the space for that
 
-I did some day-dreaming about an 18U rack with a set of Dell 600-series 1U servers; or even a Dell PowerEdge M series blade chassis but even when shopping for quality second-hand hardware at places like [Bargain Hardware](https://www.bargainhardware.co.uk/) the prices were still prohibitive and the space and power requirements, let alone noise levels, would make this a non-starter.
+I did some [day-dreaming](https://www.reddit.com/r/ServerPorn/) about an 18U rack with a set of Dell 600-series servers; or even a Dell PowerEdge M series blade chassis but even when shopping for quality second-hand hardware at places like [Bargain Hardware](https://www.bargainhardware.co.uk/) the prices were still prohibitive and the space and power requirements, let alone noise levels, would make this a non-starter.
 
 ## Go Small or Go Home
 
@@ -42,7 +42,7 @@ I eventually found what I think is the perfect solution: Dell's OptiPlex Micro r
 
 With a bit of research I decided that the OptiPlex 9020 Micro with a 4th generation Intel i5 processor was a good fit: it's a 4 core, 4 thread CPU which supports all the useful CPU extensions I may need (particularly virtualization and AES-NI instructions). It supports up to 16GB of Ram and can be configured with two hard drives: an M.2 form factor drive and a 2.5" 'laptop' drive.
 
-Thanks to companies having IT hardware refresh cycles, I managed to find a some on eBay at reasonable prices, so I grabbed a few. When they arrived it occurred to me that these would fit perfectly into a comms cabinet with a rack-mount switch to create a DIY blade server setup, of sorts. Measuring the space in a 6U comms rack that I ordered for the project I realised that the width is perfectly divisible by eight. A fun little number for IT projects, and the inspiration for the name for this project.
+Thanks to companies having IT hardware refresh cycles, I managed to find some on eBay at reasonable prices, so I grabbed a few. When they arrived it occurred to me that these would fit perfectly into a comms cabinet with a rack-mount switch to create a DIY blade server setup, of sorts. Measuring the space in a 6U comms rack that I ordered for the project I realised that the width is perfectly divisible by eight. A fun little number for IT projects, and the inspiration for the name for this project.
 
 ## The 8-bit Micro Cluster
 
