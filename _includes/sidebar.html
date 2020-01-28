@@ -4,6 +4,7 @@
   <nav class="sidebar-nav">
     <div class="gravatar">
       <img src="{{ site.author.gravatar }}?s=125" />
+      {% avatar {{site.author.github}} size=125 %}
     </div>
 
     <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/">Home</a>

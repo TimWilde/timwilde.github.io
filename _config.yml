@@ -5,7 +5,7 @@ permalink:           pretty
 title:               Tim Wilde
 tagline:             'Developer'
 description:         "I'm a full-stack, polyglot developer with a penchant for learning. I write code for all sorts of platforms including web, mobile, services, desktop, IoT, etc. This blog is about the things I learn along the way."
-url:                 http://timwil.de
+url:                 https://timwil.de
 baseurl:             ''
 paginate:            5
 
@@ -15,6 +15,7 @@ exclude:            ['/breakanoid/CREDITS.md']
 # About/contact
 author:
   name:             Tim Wilde
+  github:           timwilde
   url:              https://twitter.com/timwilde
   email:            blog@timwil.de
   gravatar:         https://www.gravatar.com/avatar/1c1ff25a3607719a16782ef5bc169422
@@ -31,3 +32,4 @@ plugins:
  - jekyll-paginate
  - jekyll-gist
  - jekyll-sitemap
+ - jekyll-avatar
