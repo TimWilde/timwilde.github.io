@@ -1,5 +1,6 @@
 ---
 layout: page
+title: Tags
 ---
 {% assign allTags = '' %}
 
@@ -23,9 +24,14 @@ layout: page
    {% assign allTags = dedupedTags | sort %}
 {% endfor %}
 
-
-<h2>Tags</h2>
 {%- if allTags.size > 0 %}
+
+<div class="tags">
+   {% for tag in allTags %}
+   <a class="tag" href="#{{ tag | slugify }}">{{tag}}</a>
+   {% endfor %}
+</div>
+
    {%- for tag in allTags %}
 <h3 id="{{tag | slugify}}">{{ tag | capitalize }}</h3>
 <ul>

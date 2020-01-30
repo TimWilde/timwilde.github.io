@@ -19,7 +19,9 @@ a.tag {
 }
 
 .tag {
+    white-space: nowrap;
     font-size: 0.79rem;
+    line-height: 1.9rem;
     background-color: #EEE;
     color: #222;
     padding: 0.25rem 0.75rem;
