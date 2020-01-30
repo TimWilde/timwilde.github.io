@@ -27,7 +27,7 @@ layout: page
 <h2>Tags</h2>
 {%- if allTags.size > 0 %}
    {%- for tag in allTags %}
-<h3>{{ tag | capitalize }}</h3>
+<h3 id="{{tag | slugify}}">{{ tag | capitalize }}</h3>
 <ul>
       {%- for page in site.posts %}
          {%- if page.tags contains tag %}
