@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Building a Kubernetes Cluster from Scratch
+tags: [kubernetes, docker, hardware, devops, multi-part]
 ---
 I've been using Docker and Docker Swarm for several years but have always been under the impression that Kubernetes wasn't necessary unless you were managing hosting at Google scale - hundreds or thousands of servers, and astronomical numbers of services. I'd had a look at Kubernetes a few times but, compared to the Docker Compose files I was used to, it just seemed so... complicated.
 
@@ -10,7 +11,7 @@ Then, in November 2019, [Mirantis acquired the Docker Enterprise arm from Docker
 
 So it's time to learn Kubernetes!
 
-## Lets Make this Fun
+## Let's Make this Fun
 
 There are a few ways to spin up a Kubernetes cluster such as [Play with Kubernetes](https://labs.play-with-k8s.com/), or by provisioning a set of workers on [DigitalOcean](https://www.digitalocean.com/products/kubernetes/) or [Azure](https://azure.microsoft.com/en-gb/services/kubernetes-service/). All of these will take care of cluster management allowing you to concentrate on running your services. These probably reflect how most people will use Kubernetes in Production so they are perfect for setting up a lab environment to learn.
 

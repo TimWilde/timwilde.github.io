@@ -1,6 +1,7 @@
 ---
 layout: post
 title: JavaScript, the new parts
+tags: [javascript, client-side, game engine, ecmascript 6]
 ---
 As things were quiet over the Christmas period I decided to catch up with some of the recent [additions to JavaScript](http://es6-features.org). Rather than just putting together a few little "Hello World" snippets of code to play with the new features, I decided I wanted to build something useful. Well, sort of useful...
 
