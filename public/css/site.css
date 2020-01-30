@@ -9,3 +9,27 @@ div.gravatar img {
 .center {
    margin: auto;
 }
+
+.tags {
+    margin-bottom: 1rem;
+}
+
+a.tag {
+    text-decoration: none;
+}
+
+.tag {
+    font-size: 0.79rem;
+    background-color: #EEE;
+    color: #222;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+}
+
+.tag:hover {
+    background-color: #CCC;
+}
+
+.tag::before {
+    content: '#';
+}

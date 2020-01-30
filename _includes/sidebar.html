@@ -6,6 +6,11 @@
       {% avatar {{site.author.github}} size=125 %}
     </div>
 
+    {%- include social-media-links.html %}
+    <div class="sidebar-item">
+      <p>{{ site.description }}</p>
+    </div>
+
     <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/">Home</a>
 
     {%- assign pages_list = site.pages | sort:"url" %}
@@ -18,10 +23,7 @@
     {%- endfor %}
   </nav>
 
-  {%- include social-media-links.html %}
-
   <div class="sidebar-item">
-    <p>{{ site.description }}</p>
     <p>Find me on {{ social_media_links | array_to_sentence_string }}</p>
     <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>
   </div>

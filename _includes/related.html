@@ -1,0 +1,44 @@
+{% assign maxRelated = 5 %}
+{% assign minCommonTags =  2 %}
+{% assign relatedPosts = 0 %}
+{% assign relatedLinks = '' %}
+
+{% for post in site.posts %} 
+   {% assign maxRelatedCounter = 0 %}
+   {% assign sameTagCount = 0 %}
+
+   {% if post.url != page.url %}
+      {% for tag in post.tags %}
+         {% if page.tags contains tag %}
+            {% assign sameTagCount = sameTagCount | plus: 1 %}
+         {% endif %}
+      {% endfor %}
+   {% endif %}
+
+   {% if sameTagCount >= minCommonTags %}
+      {% capture linkMarkup %}
+      <li>
+         <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }} <small>(published {{ post.date | date_to_string }})</small></a>
+      </li>
+      {% endcapture %}
+
+      {% assign relatedLinks = relatedLinks | append: linkMarkup %}
+      {% assign relatedPosts = relatedPosts | plus: 1 %}
+
+      {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+      {% if maxRelatedCounter >= maxRelated %}
+         {% break %}
+      {% endif %}
+   {% endif %}
+
+{% endfor %}
+
+{% if relatedPosts > 0 %}
+   <div class="related">
+      <h2>You may also enjoy</h2>
+   
+      <ul class="related-posts">
+         {{ relatedLinks }}
+      </ul>
+   </div>
+{% endif %}
