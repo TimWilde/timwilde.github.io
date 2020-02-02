@@ -4,7 +4,7 @@ title: Projects
 ---
 ## [Breakanoid](/breakanoid/)
 ![Breakanoid Screenshot](/public/img/breakanoid_small.png){:.right}
-Built during a quiet Christmas break in 2018, I built a tiny (and completely unoptimised) game engine in JavaScript as a way to get up to speed with some of the EcmaScript 6 features. 
+Built during a quiet Christmas break in 2018, I created a tiny (and completely unoptimised) game engine in JavaScript as a way to get up to speed with some of the EcmaScript 6 features. 
 
 Rather than the usual contrived 'Hello World' examples, I decided to build a break-out clone: [Breakanoid](/breakanoid)!
 
@@ -14,7 +14,7 @@ Rather than the usual contrived 'Hello World' examples, I decided to build a bre
 
 ## [Estimator](/estimator)
 ![Estimator Screenshot](/public/img/estimator.png){:.right}
-After working in a Web Agency environment for quite a few years, more often than not an estimate for work was required before having the full picture. I prefer a bit more structure than just a finger in the air (or elsewhere) to get a number, so I put together Estimator - a little tool to help derive estimates for projects.
+After working in a Web Agency environment for quite a few years I found that, more often than not, estimates for work were required before having the full picture. I prefer a bit more structure than just a finger in the air (or elsewhere) to get to a number so I put together Estimator - a little tool to help derive estimates for projects.
 
 ---
 
