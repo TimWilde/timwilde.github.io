@@ -10,6 +10,16 @@ div.gravatar img {
    margin: auto;
 }
 
+img.left {
+    float: left;
+    margin: 0 1rem 1rem 0;
+}
+
+img.right {
+    float: right;
+    margin: 0 0 1rem 1rem;
+}
+
 .tags {
     margin-bottom: 1rem;
 }
@@ -34,4 +44,8 @@ a.tag {
 
 .tag::before {
     content: '#';
+}
+
+h1, h2, h3, h4, hr, .clear-both {
+    clear: both;
 }
