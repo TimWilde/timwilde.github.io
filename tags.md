@@ -2,34 +2,16 @@
 layout: page
 title: Tags
 ---
-{% assign allTags = '' %}
-
-{% for page in site.posts %}
-   {% if page.tags.size > 0 %}
-      {% assign dedupedTags = allTags %}
-
-      {% for tag in page.tags %}
-         {% if tag != '' %}
-            {% if dedupedTags == '' %}
-               {% assign dedupedTags = tag %}
-            {% endif %}
-
-            {% unless dedupedTags contains tag %}
-               {% assign dedupedTags = dedupedTags | join:'|' | append:'|' | append:tag | split:'|' %}
-            {% endunless %}
-         {% endif %}
-      {% endfor %}
-   {% endif %}
-
-   {% assign allTags = dedupedTags | sort %}
-{% endfor %}
+{%- assign allTags = site.posts | map:"tags" | uniq | compact | sort %}
 
 {%- if allTags.size > 0 %}
 
-<div class="tags">
-   {% for tag in allTags %}
-   <a class="tag" href="#{{ tag | slugify }}">{{tag}}</a>
-   {% endfor %}
+<div class="page-tags">
+   <ul class="tags">
+      {%- for tag in allTags %}
+      <li class="tag"><a href="#{{ tag | slugify }}">{{tag}}</a></li>
+      {%- endfor %}
+   </ul>
 </div>
 
    {%- for tag in allTags %}
