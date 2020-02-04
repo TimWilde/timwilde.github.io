@@ -18,7 +18,7 @@
    {% if sameTagCount >= minCommonTags %}
       {% capture linkMarkup %}
       <li>
-         <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }} <small>(published {{ post.date | date_to_string }})</small></a>
+         <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }} <small>(published {{ post.date | date_to_string:"ordinal", "US" }})</small></a>
       </li>
       {% endcapture %}
 

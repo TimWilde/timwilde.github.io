@@ -10,6 +10,10 @@ div.gravatar img {
    margin: auto;
 }
 
+.title-case {
+    text-transform: capitalize;
+}
+
 img.left {
     float: left;
     margin: 0 1rem 1rem 0;
@@ -20,29 +24,38 @@ img.right {
     margin: 0 0 1rem 1rem;
 }
 
-.tags {
+.page-tags {
     margin-bottom: 1rem;
 }
 
-a.tag {
-    text-decoration: none;
+ul.tags {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    display: inline-block;
+    list-style-type: none;
 }
 
-.tag {
+li.tag {
+    display: inline-block;
     white-space: nowrap;
-    font-size: 0.79rem;
+    line-height: 1.2rem;
+}
+
+.tag a {
+    font-size: 0.8rem;
     line-height: 1.9rem;
     background-color: #EEE;
     color: #222;
     padding: 0.25rem 0.75rem;
     border-radius: 1rem;
+    text-decoration: none;
 }
 
-.tag:hover {
+.tag:hover a{
     background-color: #CCC;
 }
 
-.tag::before {
+.tag a::before {
     content: '#';
 }
 

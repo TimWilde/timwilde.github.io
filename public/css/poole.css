@@ -158,7 +158,7 @@ pre {
   display: block;
   margin-top: 0;
   margin-bottom: 1rem;
-  padding: 1rem;
+  padding: 0.75rem;
   font-size: .8rem;
   line-height: 1.4;
   white-space: pre;
@@ -166,6 +166,8 @@ pre {
   word-break: break-all;
   word-wrap: break-word;
   background-color: #f9f9f9;
+  border: solid 1px #efefef;
+  border-radius: 0.3rem;
 }
 pre code {
   padding: 0;
@@ -176,9 +178,12 @@ pre code {
 
 /* Pygments via Jekyll */
 .highlight {
+  margin-top: inherit;
   margin-bottom: 1rem;
-  border-radius: 4px;
+  margin-left: 0;
+  margin-right: 0;
 }
+
 .highlight pre {
   margin-bottom: 0;
 }
@@ -281,7 +286,7 @@ tbody tr:nth-child(odd) th {
  */
 
 .container {
-  max-width: 38rem;
+  max-width: 50rem;
   padding-left:  1rem;
   padding-right: 1rem;
   margin-left:  auto;
