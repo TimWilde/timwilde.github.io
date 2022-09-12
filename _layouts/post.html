@@ -13,18 +13,20 @@ layout: default
   {%- include related.html %}
 
   {%- unless page.disable-comments %}
-  <div id="disqus_thread"></div>
-
-  <script>
-    window.disqus = {
-      url: "{{ site.service.disqus }}"
-    };
-    
-    var disqus_config = function () {
-      this.page.url = "{{ site.url }}{{ page.url }}";
-      this.page.identifier = "{{ page.id }}";
-    };
-  </script>
-  <script src="{{ site.baseurl }}/public/js/disqus.js"></script>
-  {%- endunless  %}
+    <script src="https://giscus.app/client.js"
+            data-repo="timwilde/timwilde.github.io"
+            data-repo-id="MDEwOlJlcG9zaXRvcnk4NTkwNDA0"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOAIMURM4CRZEl"
+            data-mapping="title"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="light"
+            data-lang="en"
+            crossorigin="anonymous"
+            async>
+    </script>
+  {%- endunless %}
 </div>
