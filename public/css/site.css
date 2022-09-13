@@ -61,4 +61,15 @@ li.tag {
 
 h1, h2, h3, h4, hr, .clear-both {
     clear: both;
+    text-transform: capitalize;
+}
+
+.footnotes {
+    border-top: solid 1px #eee;
+    padding-top: 0.75em;
+    font-size: 0.8em;
+}
+
+.footnotes li p {
+    margin-bottom: 0.25em;
 }
