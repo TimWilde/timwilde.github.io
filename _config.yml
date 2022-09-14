@@ -13,6 +13,7 @@ baseurl:             ''
 paginate:            5
 
 # Exclusions
+future:             false
 exclude:            ['/breakanoid/CREDITS.md']
 
 # About/contact
