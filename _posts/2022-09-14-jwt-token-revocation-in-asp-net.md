@@ -70,4 +70,4 @@ I think this approach, suggested in the OWASP Cheat Sheets, is rather elegant an
 
 This post shows a much-simplified example of how it could be implemented; if you do follow these ideas do make sure to implement some error handling and consider making the disavowed token storage a separate, injectable type that stores its data in an out-of-proc store otherwise there will be all sorts of odd _signed-in then not signed-in_ problems when scaling beyond a single host.
 
-Which leads me to a closing question: is there a more elegant way to handle dependecies that need to exist before the `builder.build()` call, like the `JwtLifetimeManager` in this example?
+Which leads me to a closing question: is there a more elegant way to handle dependecies that need to exist before the `builder.build()` call, like the `JwtTokenLifetimeManager` in this example?
