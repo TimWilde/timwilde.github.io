@@ -102,7 +102,9 @@ Or, more probably, like this:
 
 ### Impromptu Taxonomy
 
-Being a hierarchy of classes containing properties, this lends itself really well to organization and the creation of a selector taxonomy.
+Being a hierarchy of classes containing properties, this lends itself really well to organization and the creation of a selector taxonomy[^1].
+
+[^1]: Yes, it took me 5 minutes to remember the word "taxonomy" and now I shall use it. Liberally!
 
 It quickly became evident that there were some elements common to all pages (such as the page header) and there were others that were very specific to a particular area of the site (user account details, for example) so those were nested appropriately to make them easier to discover and to also produce more self-descriptive selectors.
 

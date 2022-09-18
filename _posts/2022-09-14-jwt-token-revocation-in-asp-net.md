@@ -13,7 +13,7 @@ Let's take a look at one way to add that feature to ASP.NET projects.
 
 I'm going to assume that you have authentication and authorization working with JWT tokens in your ASP.NET Web API already: users of your app can sign _in_ &mdash; signing out is the problem.
 
-Perhaps your project has a mobile or single page application front-end that sends user credentials to a RESTful-ish[^1] API that responds with a JWT token if they are valid. The presence of the token indicates authentication (the user has proven their identity) and the claims in the token, if any, define the roles the user is authorised to perform.
+Perhaps your project has a mobile or single page application front-end that sends user credentials to a RESTful-ish[^1] API that responds with a JWT token if they are valid. The presence of the token indicates authentication (the user has proven their identity) and the claims in the token, if any, define the roles the user is authorized to perform.
 
 [^1]: Everyone _starts_ with a RESTful API...
 
@@ -69,4 +69,4 @@ I think this approach, suggested in the OWASP Cheat Sheets, is rather elegant an
 
 This post shows a much-simplified example of how it could be implemented; if you do follow these ideas do make sure to implement some error handling and consider making the disavowed token storage a separate, injectable type that stores its data in an out-of-proc store otherwise there will be all sorts of odd _signed-in then not signed-in_ problems when scaling beyond a single host.
 
-Which leads me to a closing question: is there a more elegant way to handle dependecies that need to exist before the `builder.build()` call, like the `JwtTokenLifetimeManager` in this example?
+Which leads me to a closing question: is there a more elegant way to handle dependencies that need to exist before the `builder.build()` call, like the `JwtTokenLifetimeManager` in this example?
