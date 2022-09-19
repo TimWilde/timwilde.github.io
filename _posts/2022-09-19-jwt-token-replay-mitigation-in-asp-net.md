@@ -10,6 +10,14 @@ links:
    cookie-prefixes: "https://datatracker.ietf.org/doc/html/draft-west-cookie-prefixes"
    token-replay-delegate: "https://learn.microsoft.com/en-us/dotnet/api/microsoft.identitymodel.tokens.tokenreplayvalidator?view=azure-dotnet"
    rfc-jti-claim: "https://www.rfc-editor.org/rfc/rfc7519.html#section-4.1.7"
+   spa-jwt-demo: "https://github.com/TimWilde/spa-jwt-demo"
+   demo-program: "https://github.com/TimWilde/spa-jwt-demo/blob/main/FrontEnd.SPA/Program.cs"
+   demo-jwt-bearer-config: "https://github.com/TimWilde/spa-jwt-demo/blob/main/FrontEnd.SPA/Configurations/JwtBearerConfiguration.cs"
+   demo-infrastructure: "https://github.com/TimWilde/spa-jwt-demo/tree/main/FrontEnd.SPA/Infrastructure"
+   demo-auth-controller: "https://github.com/TimWilde/spa-jwt-demo/blob/main/FrontEnd.SPA/Controllers/AuthenticationController.cs"
+   demo-client-app: "https://github.com/TimWilde/spa-jwt-demo/tree/main/FrontEnd.SPA/ClientApp"
+   github-wouter: "https://github.com/molefrog/wouter"
+   recoiljs: "https://recoiljs.org/"
 ---
 In a previous post, we had a look at [how JWT tokens can be revoked]({%- link _posts/2022-09-14-jwt-token-revocation-in-asp-net.md %}) before they expire in order to build a sign out feature. The next problem is that tokens can be captured and used in nefarious requests: token replay attacks.
 
@@ -203,4 +211,12 @@ That looks and sounds quite complicated, but is reasonably straight forward once
 - Hash the cookie contents and compare the two
 - If they match, the request is, more-than-likely, not fraudulent
 
-Fragments of code in a blog post aren't the easiest to follow without the wider context, so I have made a small sample ASP.NET app with a React front-end to demo this and the lifetime validation. That repository is available at GitHub.
+Fragments of code in a blog post aren't the easiest to follow without the wider context, so I have made a small sample ASP.NET app with a React front-end to demo this and the lifetime validation. [That repository is available at GitHub]({{page.links.spa-jwt-demo}}){:target="_blank"}.
+
+Files of interest in the demo codebase are:
+
+- [Program.cs]({{page.links.demo-program}}){:target="_blank"} shows all of the configuration discussed
+- [Configurations\JwtBearerConfiguration.cs]({{page.links.demo-jwt-bearer-config}}){:target="_blank"} contains the JWT configuration discussed
+- [Infrastructure]({{page.links.demo-infrastructure}}){:target="_blank"} contains the lifetime and replay implementations
+- [Controllers\AuthenticationController.cs]({{page.links.demo-auth-controller}}){:target="_blank"} contains the code that creates the JWT and the cookie
+- [ClientApp]({{page.links.demo-client-app}}){:target="_blank"} a React front-end with most of the defaults removed and reconfigured with [Wouter]({{page.links.github-wouter}}){:target="_blank"} and [Recoil]({{page.links.recoiljs}}){:target="_blank"}
