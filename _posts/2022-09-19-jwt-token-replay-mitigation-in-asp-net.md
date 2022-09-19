@@ -2,8 +2,6 @@
 layout: post
 title: JWT Token Replay Mitigation in ASP.NET
 tags: [ASP.NET, Web API, JWT Tokens, Authentication, Server-Side]
-disable-comments: true
-published: false
 links:
    owasp-jwt-side-jacking: "https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html#token-sidejacking"
    mdn-cookies: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies"
