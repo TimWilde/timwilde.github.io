@@ -2,7 +2,7 @@
    {% assign pageTags = include.tags | sort_natural %}
    <ul class="tags">
    {% for tag in pageTags %}
-      <li class="tag"><a href="{{site.baseurl}}/{{include.section}}/#{{ tag | slugify }}">{{tag | downcase}}</a></li>
+      <li class="tag"><a href="{{site.baseurl}}/{{include.section}}/#{{ tag | slugify }}"  data-tag="{{tag | slugify}}">{{tag | downcase}}</a></li>
    {% endfor %}
    </ul>
 {% endif %}

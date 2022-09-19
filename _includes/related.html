@@ -3,7 +3,7 @@
 {% assign relatedPosts = 0 %}
 {% assign relatedLinks = '' %}
 
-{% for post in site.posts %} 
+{% for post in site.posts %}
    {% assign maxRelatedCounter = 0 %}
    {% assign sameTagCount = 0 %}
 
@@ -19,6 +19,7 @@
       {% capture linkMarkup %}
       <li>
          <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }} <small>(published {{ post.date | date_to_string:"ordinal", "US" }})</small></a>
+         <div class="page-tags">{%- include page-tags.html section="tags" tags=post.tags %}</div>
       </li>
       {% endcapture %}
 
@@ -36,7 +37,7 @@
 {% if relatedPosts > 0 %}
    <div class="related">
       <h2>You may also enjoy</h2>
-   
+
       <ul class="related-posts">
          {{ relatedLinks }}
       </ul>

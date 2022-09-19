@@ -1,0 +1,14 @@
+---
+note: 'generates a json file containing all tags, slugified'
+---
+{%- assign allTags = site.posts | map: "tags" | uniq | compact | sort_natural %}
+{%- if allTags.size > 0 %}
+{%- assign tags = "" | split: ',' %}
+{%- for tag in allTags %}
+   {%- assign tagSlug = tag | slugify %}
+   {%- assign tags = tags | push: tagSlug %}
+{%- endfor %}
+{
+   "tags": {{tags | jsonify }}
+}
+{%- endif %}
