@@ -97,3 +97,11 @@ pre {
   white-space: pre;
   overflow: auto;
 }
+
+.highlight table,
+.highlight code table td,
+.highlight code table td pre {
+  border-width: 0 !important;
+  margin-bottom: 0;
+  padding: 0.25rem 0.25rem;
+}

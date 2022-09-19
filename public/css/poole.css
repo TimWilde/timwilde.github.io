@@ -76,7 +76,7 @@ a:focus {
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
-  margin-bottom: .5rem;
+  margin-bottom: 1rem;
   font-weight: bold;
   line-height: 1.25;
   color: #313131;
@@ -96,6 +96,11 @@ h3 {
 h4, h5, h6 {
   margin-top: 1rem;
   font-size: 1rem;
+}
+
+h1.post-title,
+h2.post-title {
+  margin-bottom: 0.5rem;
 }
 
 /* Body text */
@@ -148,11 +153,11 @@ pre {
   font-family: Menlo, Monaco, "Courier New", monospace;
 }
 code {
-  padding: .25em .25em;
-  /* font-size: 90%; */
-  color: #a3434c;
-  /* background-color: #f9f9f9; */
-  /* border-radius: 3px; */
+  padding: .125em .25em;
+  font-size: 90%;
+  color: #b30000;
+  background-color: #f9f9f9;
+  border-radius: 0.125rem;
 }
 pre {
   display: block;
