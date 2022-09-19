@@ -1,4 +1,5 @@
 {% if include.tags.size > 0 %}
+   <p class="visually-hidden" aria-label="This post is tagged with">This post is tagged with:</p>
    {% assign pageTags = include.tags | sort_natural %}
    <ul class="tags">
    {% for tag in pageTags %}
