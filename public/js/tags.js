@@ -20,7 +20,7 @@
       }
    }
 
-   const pageTags = document.querySelectorAll('[data-tag')
+   const pageTags = document.querySelectorAll('[data-tag]')
    for (const tagEl of pageTags) {
       tagEl.style.backgroundColor = tagColors[tagEl.dataset.tag].background
       tagEl.style.borderColor = tagColors[tagEl.dataset.tag].border

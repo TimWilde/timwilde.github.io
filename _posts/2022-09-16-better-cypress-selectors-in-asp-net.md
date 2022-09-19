@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Better Cypress Selectors in ASP.NET
-tags: [Client-Side, Server-Side, ASP.NET, Cypress]
+tags: [JavaScript, Client-Side, Server-Side, ASP.NET, Cypress]
 links:
   asp-net-tag-helpers: "https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/intro?view=aspnetcore-6.0"
   cypress-best-practices: "https://docs.cypress.io/guides/references/best-practices#Selecting-Elements"
