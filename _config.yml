@@ -1,5 +1,10 @@
 # Page settings
 excerpt_separator:   <!--more-->
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
 
 # Permalinks
 permalink:           pretty
@@ -10,7 +15,8 @@ tagline:             'Developer'
 description:         "I'm a full-stack, polyglot developer with a penchant for learning. I write code for all sorts of platforms including web, mobile, services, desktop, IoT, etc. This blog is about the things I learn along the way."
 url:                 https://timwil.de
 baseurl:             ''
-paginate:            5
+paginate:            4
+paginate_path:       "/page-:num/"
 
 # Exclusions
 future:             false
