@@ -36,6 +36,7 @@ img.right {
 }
 
 .page-tags {
+  text-align: center;
   margin-bottom: 1rem;
 }
 
@@ -44,6 +45,7 @@ ul.tags {
   padding: 0 0 0 0;
   display: inline-block;
   list-style-type: none;
+  line-height: 2rem;
 }
 
 li.tag {
@@ -69,12 +71,46 @@ h2.tag {
   text-decoration: none;
 }
 
+.tag a[data-selected="true"] {
+  border-width: 3px;
+  box-shadow: 0px 2px 2px 2px rgba(0,0,0,0.125);
+}
+
+.tag a[data-enabled="false"] {
+  border: solid 1px #eee !important;
+  background-color: #fafafa !important;
+  color: #666 !important;
+}
+
 .tag:hover a {
   background-color: #ccc;
 }
 
 .tag a::before {
   content: "#";
+}
+
+.filter[data-enabled="false"] {
+  display: none;
+}
+
+.filter {
+  text-align: center;
+}
+
+.filter a {
+  border-radius: 1rem;
+  padding: 0.25rem 0.75rem;
+  border: solid 2px #04A;
+  color: #666;
+}
+
+.filter a:hover {
+  text-decoration: none;
+}
+
+section[data-enabled="false"] {
+  display: none;
 }
 
 h1, h2, h3, h4,
