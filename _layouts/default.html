@@ -25,5 +25,10 @@
     <script src="{{ site.baseurl }}/public/js/sidebar.js"></script>
     <script src="{{ site.baseurl }}/public/js/google-analytics.js"></script>
     <script src="{{ site.baseurl }}/public/js/tags.js" defer></script>
+{%- if page.scripts %}
+  {%- for script in page.scripts %}
+    <script src="{{ site.baseul }}/public/js/{{script}}" defer></script>
+  {%- endfor %}
+{%- endif %}
   </body>
 </html>
