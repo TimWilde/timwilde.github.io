@@ -412,12 +412,14 @@ const drawFrame = () => {
 
 const music = document.querySelector('audio')
 
-music.addEventListener('play', function() {
-   isPlaying = true
-   drawFrame()
+music.addEventListener('play', function () {
+   if (isPlaying !== true) {
+      isPlaying = true
+      drawFrame()
+   }
 })
 
-music.addEventListener('pause', function() {
+music.addEventListener('pause', function () {
    isPlaying = false
 })
 
