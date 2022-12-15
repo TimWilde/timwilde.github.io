@@ -1,0 +1,15 @@
+{
+  "name": "xmas-card",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "browser-sync start -s -f . --no-notify --port 9000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browser-sync": "^2.27.10"
+  }
+}

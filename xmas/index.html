@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="theme-color" content="#222222">
+   <title>Christmas Card 3D</title>
+   <link rel="stylesheet" href="site.css">
+</head>
+
+<body>
+   <div class="scene scene--card">
+      <div class="card">
+         <canvas id="card" width="600" height="600"></canvas>
+         <div class="center">
+            <audio controls id="music">
+               <source src="music/Borrtex - Happy Holidays.mp3" type="audio/mpeg"
+                  data-from="https://freemusicarchive.org/music/Borrtex/Christmas_Time" />
+               <source src="music/Borrtex - Christmas Eve.mp3" type="audio/mpeg"
+                  data-from="https://freemusicarchive.org/music/Borrtex/Christmas_Time" />
+               <source src="music/Borrtex - Buying Presents.mp3" type="audio/mpeg"
+                  data-from="https://freemusicarchive.org/music/Borrtex/Christmas_Time" />
+               <source src="music/Borrtex - Love & Generosity.mp3" type="audio/mpeg"
+                  data-from="https://freemusicarchive.org/music/Borrtex/Christmas_Time" />
+            </audio>
+            <p id="playing">
+               Playing: <a href="https://freemusicarchive.org/music/Borrtex/Christmas_Time">Happy Holidays by
+                  Borrtex</a>
+            </p>
+         </div>
+      </div>
+   </div>
+   <script src="card.js" defer></script>
+   <script src="music.js" defer></script>
+</body>
+
+</html>
