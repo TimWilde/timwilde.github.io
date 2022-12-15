@@ -373,7 +373,6 @@ const renderMessage = () => {
       for (i = 0; i < image.width; i += 2) {
          const offset = Math.sin((i + tick) / 25) * 5
          const x = (width / 2) - (image.width / 2) + i
-         // const y = (height - 5 - image.height) + offset
          const y = 30 + offset
          gfx.drawImage(image, i, 0, 2, image.height, x, y, 2, image.height)
       }
@@ -412,7 +411,6 @@ const drawFrame = () => {
 }
 
 const music = document.querySelector('audio')
-const card = document.querySelector('.card')
 
 music.addEventListener('play', function() {
    isPlaying = true
@@ -421,15 +419,6 @@ music.addEventListener('play', function() {
 
 music.addEventListener('pause', function() {
    isPlaying = false
-})
-
-card.addEventListener('click', function () {
-   if (isPlaying) {
-      drawFrame()
-      music.play()
-   } else {
-      music.pause()
-   }
 })
 
 document.addEventListener('keydown', e => {
