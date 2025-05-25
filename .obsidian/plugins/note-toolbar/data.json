@@ -1,0 +1,124 @@
+{
+  "debugEnabled": false,
+  "emptyViewToolbar": "dd2f746f-a57f-4461-b825-1c3081bd6c47",
+  "export": {
+    "includeIcons": true,
+    "replaceVars": true,
+    "useDataEls": true,
+    "useIds": true
+  },
+  "folderMappings": [
+    {
+      "folder": "_system",
+      "toolbar": "dd2f746f-a57f-4461-b825-1c3081bd6c47"
+    }
+  ],
+  "icon": "circle-ellipsis",
+  "keepPropsState": false,
+  "onboarding": {},
+  "recentFiles": [
+    "_system/Home.md",
+    "_posts/2025-05-25-something.md",
+    "_posts/Untitled.md",
+    "_posts/2022-09-19-jwt-token-replay-mitigation-in-asp-net.md",
+    "_posts/2025-05-25-something-or-other.md",
+    "_posts/2022-09-14-jwt-token-revocation-in-asp-net.md",
+    "_posts/2018-01-01-New-start.md",
+    "_posts/2022-09-16-better-cypress-selectors-in-asp-net.md",
+    "_posts/2020-01-10-Building-a-Kubernetes-cluster-from-scratch.md",
+    "_posts/2018-01-06-Javascript-the-new-parts.md"
+  ],
+  "ribbonAction": "toolbar",
+  "scriptingEnabled": false,
+  "showEditInFabMenu": false,
+  "showToolbarIn": {
+    "audio": false,
+    "canvas": false,
+    "image": false,
+    "kanban": false,
+    "pdf": false,
+    "video": false
+  },
+  "showToolbarInFileMenu": false,
+  "toolbarProp": "notetoolbar",
+  "toolbars": [
+    {
+      "uuid": "dd2f746f-a57f-4461-b825-1c3081bd6c47",
+      "customClasses": "",
+      "defaultItem": null,
+      "defaultStyles": [
+        "border",
+        "even",
+        "sticky",
+        "left"
+      ],
+      "hasCommand": false,
+      "items": [
+        {
+          "uuid": "f89fa4d9-7450-46d6-b326-821ca02fcbd1",
+          "hasCommand": false,
+          "icon": "lucide-file-plus",
+          "inGallery": false,
+          "label": "New Post",
+          "link": "Create new note",
+          "linkAttr": {
+            "commandId": "file-explorer:new-file",
+            "hasVars": false,
+            "type": "command",
+            "focus": "editor",
+            "target": "tab"
+          },
+          "tooltip": "Add a new blog post",
+          "visibility": {
+            "desktop": {
+              "allViews": {
+                "components": [
+                  "icon",
+                  "label"
+                ]
+              }
+            },
+            "mobile": {
+              "allViews": {
+                "components": [
+                  "icon",
+                  "label"
+                ]
+              }
+            },
+            "tablet": {
+              "allViews": {
+                "components": [
+                  "icon",
+                  "label"
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "mobileStyles": [],
+      "name": "System Home",
+      "position": {
+        "desktop": {
+          "allViews": {
+            "position": "top"
+          }
+        },
+        "mobile": {
+          "allViews": {
+            "position": "props"
+          }
+        },
+        "tablet": {
+          "allViews": {
+            "position": "props"
+          }
+        }
+      },
+      "updated": "2025-05-25T22:03:47.735Z"
+    }
+  ],
+  "version": 20250313.1,
+  "whatsnew_version": "1.23"
+}

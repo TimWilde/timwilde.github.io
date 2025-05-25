@@ -1,7 +1,13 @@
 ---
 layout: post
 title: Building a Kubernetes Cluster from Scratch
-tags: [Kubernetes, Docker, Hardware, DevOps, Multi-Part]
+tags:
+  - Kubernetes
+  - Docker
+  - Hardware
+  - DevOps
+  - Multi-Part
+date: 2020-01-10
 ---
 I've been using Docker and Docker Swarm for several years but have always been under the impression that Kubernetes wasn't necessary unless you were managing hosting at Google scale - hundreds or thousands of servers, and astronomical numbers of services. I'd had a look at Kubernetes a few times but, compared to the Docker Compose files I was used to, it just seemed so... complicated.
 

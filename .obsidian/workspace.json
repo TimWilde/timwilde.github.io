@@ -4,21 +4,23 @@
     "type": "split",
     "children": [
       {
-        "id": "585d046aaf2dd578",
+        "id": "874f35ff3139ff1c",
         "type": "tabs",
         "children": [
           {
-            "id": "e2eed2a81abae612",
+            "id": "6bc16244fdff172c",
             "type": "leaf",
+            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_system/templates/new-post.md",
-                "mode": "source",
-                "source": true
+                "file": "_system/Home.md",
+                "mode": "preview",
+                "source": false
               },
+              "pinned": true,
               "icon": "lucide-file",
-              "title": "new-post"
+              "title": "Home"
             }
           }
         ]
@@ -78,7 +80,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 235.5
+    "width": 432.5
   },
   "right": {
     "id": "b55103e92fe49083",
@@ -94,7 +96,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_system/templates/new-post.md",
+                "file": "_system/Home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +106,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for new-post"
+              "title": "Backlinks for Home"
             }
           },
           {
@@ -113,12 +115,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_system/templates/new-post.md",
+                "file": "_system/Home.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from new-post"
+              "title": "Outgoing links from Home"
             }
           },
           {
@@ -142,13 +144,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_system/templates/new-post.md",
+                "file": "_system/Home.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of new-post"
+              "title": "Outline of Home"
             }
           },
           {
@@ -180,24 +182,34 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "templater-obsidian:Templater": false
+      "templater-obsidian:Templater": false,
+      "homepage:Open homepage": false
     }
   },
-  "active": "e2eed2a81abae612",
+  "active": "6bc16244fdff172c",
   "lastOpenFiles": [
-    "_site/1980/08/16/testing-obsidian-integrations/index.html",
-    "_site/1980/08/16/testing-obsidian-integrations",
-    "_site/1980/08/16",
-    "_site/1980/08",
-    "_site/1980",
-    "_posts/2019-05-25-testing-obsidian-integrations.md",
-    "_site/2019/05/25/testing-obsidian-integrations/index.html",
-    "_site/2019/05/25/testing-obsidian-integrations",
-    "_site/2019/05/25",
-    "_site/2019/05",
-    "_site/2019",
+    "_system/Home.md",
+    "_posts/2025-05-25-something.md",
+    "_system/styles/github-pages.css",
+    "_system/styles",
+    "_site/2025/05/25/something/index.html",
+    "_site/2025/05/25/something",
+    "_site/2025/05/25",
+    "_site/2025/05",
+    "_site/2025",
+    "_posts/2022-09-19-jwt-token-replay-mitigation-in-asp-net.md",
+    "_posts/2025-05-25-something-or-other.md",
+    "_posts/2022-09-14-jwt-token-revocation-in-asp-net.md",
+    "_posts/2018-01-01-New-start.md",
     "_site/2022/09/19/jwt-token-replay-mitigation-in-asp-net/index.html",
+    "_site/2022/09/19/jwt-token-replay-mitigation-in-asp-net",
+    "_site/2022/09/19",
+    "_posts/2022-09-16-better-cypress-selectors-in-asp-net.md",
+    "_posts/2020-01-10-Building-a-Kubernetes-cluster-from-scratch.md",
+    "_posts/2018-01-06-Javascript-the-new-parts.md",
+    "_system/templates/new-post.md",
     "_site/xmas/merry-christmas.png",
+    "_posts/2019-05-25-testing-obsidian-integrations.md",
     "_site/public/img/game-of-life.png",
     "_site/public/img/estimator.png",
     "_site/public/img/breakanoid_small.png",
@@ -209,9 +221,7 @@
     "_site/estimator/img/glyphicons-halflings-white.png",
     "_posts/2025-05-25-testing-obsidian-integrations.md",
     "_posts/2020-05-25-testing-obsidian-integrations.md",
-    "_system/templates/new-post.md",
     "_posts/2025-05-25-something-that-happened-one-time.md",
-    "_posts/2018-01-01-New-start.md",
     "thanks.md",
     "tags.md",
     "projects.md"

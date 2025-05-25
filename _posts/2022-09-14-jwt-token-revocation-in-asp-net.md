@@ -1,7 +1,15 @@
 ---
 layout: post
 title: JWT Token Revocation in ASP.NET
-tags: [ASP.NET, Web API, JWT Tokens, Authentication, Server-Side]
+tags:
+  - ASP.NET
+  - Web
+  - API
+  - JWT
+  - Tokens
+  - Authentication
+  - Server-Side
+date: 2022-09-14
 ---
 JWT tokens are a popular way to implement authentication and authorization. The _problem_ with JWT tokens is that they don't intrinsically provide a revocation mechanism: tokens are valid until they expire.
 

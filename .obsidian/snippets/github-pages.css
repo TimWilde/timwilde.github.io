@@ -1,0 +1,30 @@
+/* Bypassing the "svg fill none" bug for icons */
+.callout[data-callout="caution"],
+.callout[data-callout="important"] {
+  & > .callout-title {
+        & svg {
+            fill: none;
+        }
+    }
+}
+
+/* Overriding Obsidian's callouts */
+.callout[data-callout="caution"] {
+    --callout-color: 220, 89, 81;
+    --callout-icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-octagon-alert"><path d="M12 16h.01"/><path d="M12 8v4"/><path d="M15.312 2a2 2 0 0 1 1.414.586l4.688 4.688A2 2 0 0 1 22 8.688v6.624a2 2 0 0 1-.586 1.414l-4.688 4.688a2 2 0 0 1-1.414.586H8.688a2 2 0 0 1-1.414-.586l-4.688-4.688A2 2 0 0 1 2 15.312V8.688a2 2 0 0 1 .586-1.414l4.688-4.688A2 2 0 0 1 8.688 2z"/></svg>;
+}
+
+.callout[data-callout="important"] {
+    --callout-color: 137, 101, 203;
+    --callout-icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square-warning"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M12 7v2"/><path d="M12 13h.01"/></svg>;
+}
+
+.callout[data-callout="note"] {
+    --callout-color: 76, 150, 214;
+    --callout-icon: lucide-alert-circle;
+}
+
+.callout[data-callout="tip"] {
+    --callout-color: 102, 175, 100;
+    --callout-icon: lucide-lightbulb;
+}
