@@ -22,6 +22,7 @@ page_excerpts:       true
 # Exclusions
 future:             false
 exclude:
+ - '/vendor/'
  - '/breakanoid/CREDITS.md'
  - '/_system/'
  - '/.obsidian/'
