@@ -28,10 +28,6 @@ exclude:
  - '/.obsidian/'
  - '/Gemfile'
  - '/Gemfile.lock'
- - '/xmas/'
- - '/3d/'
- - '/breakanoid/'
- - '/game-of-life/'
 
 # About/contact
 author:
