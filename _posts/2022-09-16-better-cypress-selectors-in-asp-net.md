@@ -1,19 +1,25 @@
 ---
 layout: post
 title: Better Cypress Selectors in ASP.NET
-tags: [JavaScript, Client-Side, Server-Side, ASP.NET, Cypress]
+tags:
+  - JavaScript
+  - Client-Side
+  - Server-Side
+  - ASP.NET
+  - Cypress
 links:
-  asp-net-tag-helpers: "https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/intro?view=aspnetcore-6.0"
-  cypress-best-practices: "https://docs.cypress.io/guides/references/best-practices#Selecting-Elements"
-  cypress-commands: "https://docs.cypress.io/api/cypress-api/custom-commands"
-  expression-bodied-members: "https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/expression-bodied-members"
-  honeycomb-blog-post: "https://honeycomb.io/blog/2018/01/simple-structured-logging-with-nlog/"
-  optimizing-with-span: "https://www.stevejgordon.co.uk/an-introduction-to-optimising-code-using-span-t"
-  description-attribute: "https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.descriptionattribute?view=net-6.0"
-  typespace-github: "https://github.com/TimWilde/Typespace"
-  typespace-license: "https://github.com/TimWilde/Typespace/blob/main/LICENSE"
-  typespace-tickets: "https://github.com/TimWilde/Typespace/issues"
-  benchmarkdotnet: "https://benchmarkdotnet.org/"
+  asp-net-tag-helpers: https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/intro?view=aspnetcore-6.0
+  cypress-best-practices: https://docs.cypress.io/guides/references/best-practices#Selecting-Elements
+  cypress-commands: https://docs.cypress.io/api/cypress-api/custom-commands
+  expression-bodied-members: https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/expression-bodied-members
+  honeycomb-blog-post: https://honeycomb.io/blog/2018/01/simple-structured-logging-with-nlog/
+  optimizing-with-span: https://www.stevejgordon.co.uk/an-introduction-to-optimising-code-using-span-t
+  description-attribute: https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.descriptionattribute?view=net-6.0
+  typespace-github: https://github.com/TimWilde/Typespace
+  typespace-license: https://github.com/TimWilde/Typespace/blob/main/LICENSE
+  typespace-tickets: https://github.com/TimWilde/Typespace/issues
+  benchmarkdotnet: https://benchmarkdotnet.org/
+date: 2022-09-16
 ---
 Working with Cypress on an ASP.NET project recently, I was getting frustrated with adding arbitrary strings to the markup as selectors for the tests. Strings are difficult to work with: they have no structure, can contain nearly anything, and are difficult to refactor. They are, in my opinion, the junk drawer of programming languages. I prefer more [structured data]({{page.links.honeycomb-blog-post}}){:target="_blank"}.
 

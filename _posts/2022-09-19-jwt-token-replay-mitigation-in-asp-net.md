@@ -1,21 +1,29 @@
 ---
 layout: post
 title: JWT Token Replay Mitigation in ASP.NET
-tags: [ASP.NET, Web API, JWT Tokens, Authentication, Server-Side]
+tags:
+  - ASP.NET
+  - Web
+  - API
+  - JWT
+  - Tokens
+  - Authentication
+  - Server-Side
 links:
-   owasp-jwt-side-jacking: "https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html#token-sidejacking"
-   mdn-cookies: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies"
-   cookie-prefixes: "https://datatracker.ietf.org/doc/html/draft-west-cookie-prefixes"
-   token-replay-delegate: "https://learn.microsoft.com/en-us/dotnet/api/microsoft.identitymodel.tokens.tokenreplayvalidator?view=azure-dotnet"
-   rfc-jti-claim: "https://www.rfc-editor.org/rfc/rfc7519.html#section-4.1.7"
-   spa-jwt-demo: "https://github.com/TimWilde/spa-jwt-demo"
-   demo-program: "https://github.com/TimWilde/spa-jwt-demo/blob/main/FrontEnd.SPA/Program.cs"
-   demo-jwt-bearer-config: "https://github.com/TimWilde/spa-jwt-demo/blob/main/FrontEnd.SPA/Configurations/JwtBearerConfiguration.cs"
-   demo-infrastructure: "https://github.com/TimWilde/spa-jwt-demo/tree/main/FrontEnd.SPA/Infrastructure"
-   demo-auth-controller: "https://github.com/TimWilde/spa-jwt-demo/blob/main/FrontEnd.SPA/Controllers/AuthenticationController.cs"
-   demo-client-app: "https://github.com/TimWilde/spa-jwt-demo/tree/main/FrontEnd.SPA/ClientApp"
-   github-wouter: "https://github.com/molefrog/wouter"
-   recoiljs: "https://recoiljs.org/"
+  owasp-jwt-side-jacking: https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html#token-sidejacking
+  mdn-cookies: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#restrict_access_to_cookies
+  cookie-prefixes: https://datatracker.ietf.org/doc/html/draft-west-cookie-prefixes
+  token-replay-delegate: https://learn.microsoft.com/en-us/dotnet/api/microsoft.identitymodel.tokens.tokenreplayvalidator?view=azure-dotnet
+  rfc-jti-claim: https://www.rfc-editor.org/rfc/rfc7519.html#section-4.1.7
+  spa-jwt-demo: https://github.com/TimWilde/spa-jwt-demo
+  demo-program: https://github.com/TimWilde/spa-jwt-demo/blob/main/FrontEnd.SPA/Program.cs
+  demo-jwt-bearer-config: https://github.com/TimWilde/spa-jwt-demo/blob/main/FrontEnd.SPA/Configurations/JwtBearerConfiguration.cs
+  demo-infrastructure: https://github.com/TimWilde/spa-jwt-demo/tree/main/FrontEnd.SPA/Infrastructure
+  demo-auth-controller: https://github.com/TimWilde/spa-jwt-demo/blob/main/FrontEnd.SPA/Controllers/AuthenticationController.cs
+  demo-client-app: https://github.com/TimWilde/spa-jwt-demo/tree/main/FrontEnd.SPA/ClientApp
+  github-wouter: https://github.com/molefrog/wouter
+  recoiljs: https://recoiljs.org/
+date: 2022-09-19
 ---
 In a previous post, we had a look at [how JWT tokens can be revoked]({%- link _posts/2022-09-14-jwt-token-revocation-in-asp-net.md %}) before they expire in order to build a sign out feature. The next problem is that tokens can be captured and used in nefarious requests: token replay attacks.
 
