@@ -1,0 +1,13 @@
+{
+  "useMarkdownLinks": true,
+  "showUnsupportedFiles": true,
+  "attachmentFolderPath": "public",
+  "strictLineBreaks": true,
+  "tabSize": 3,
+  "useTab": false,
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "_posts",
+  "newLinkFormat": "absolute",
+  "showInlineTitle": false
+}

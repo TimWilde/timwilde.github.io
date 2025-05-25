@@ -21,13 +21,22 @@ page_excerpts:       true
 
 # Exclusions
 future:             false
-exclude:            ['/breakanoid/CREDITS.md']
+exclude:
+ - '/breakanoid/CREDITS.md'
+ - '/_system/'
+ - '/.obsidian/'
+ - '/Gemfile'
+ - '/Gemfile.lock'
+ - '/xmas/'
+ - '/3d/'
+ - '/breakanoid/'
+ - '/game-of-life/'
 
 # About/contact
 author:
   name:             Tim Wilde
   github:           timwilde
-  url:              https://twitter.com/timwilde
+  url:              https://timwil.de
   email:            blog@timwil.de
   gravatar:         https://www.gravatar.com/avatar/1c1ff25a3607719a16782ef5bc169422
 
@@ -40,3 +49,4 @@ plugins:
  - jekyll-gist
  - jekyll-sitemap
  - jekyll-avatar
+ - jekyll-gfm-admonitions

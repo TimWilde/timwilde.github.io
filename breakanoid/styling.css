@@ -8,7 +8,7 @@
    src: url("KenneyMiniSquare.ttf");
 }
 
-html, body {
+html /*, body*/ {
    overflow-x: hidden;
 }
 
@@ -90,29 +90,7 @@ button#play:disabled {
    cursor: none;
 }
 
-/* Disable pull to reload */
-.wrapper {
-   /* Break the flow */
-   position: absolute;
-   top: 0px;
- 
-   /* Give them all the available space */
-   width: 100%;
-   height: 100%;
- 
-   /* Remove the margins if any */
-   margin: 0;
- 
-   /* Allow them to scroll down the document */
-   overflow-y: hidden;
- }
- 
- .body {
+.body {
    /* Sending body at the bottom of the stack */
    z-index: 1;
- }
- 
- .wrapper {
-   /* Making the wrapper stack above the body */
-   z-index: 2;
  }
