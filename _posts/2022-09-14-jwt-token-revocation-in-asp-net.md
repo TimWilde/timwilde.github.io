@@ -10,6 +10,7 @@ tags:
   - Authentication
   - Server-Side
 date: 2022-09-14
+toc: true
 ---
 JWT tokens are a popular way to implement authentication and authorization. The _problem_ with JWT tokens is that they don't intrinsically provide a revocation mechanism: tokens are valid until they expire.
 

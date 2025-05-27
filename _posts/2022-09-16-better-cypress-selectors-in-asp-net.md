@@ -20,6 +20,7 @@ links:
   typespace-tickets: https://github.com/TimWilde/Typespace/issues
   benchmarkdotnet: https://benchmarkdotnet.org/
 date: 2022-09-16
+toc: true
 ---
 Working with Cypress on an ASP.NET project recently, I was getting frustrated with adding arbitrary strings to the markup as selectors for the tests. Strings are difficult to work with: they have no structure, can contain nearly anything, and are difficult to refactor. They are, in my opinion, the junk drawer of programming languages. I prefer more [structured data]({{page.links.honeycomb-blog-post}}){:target="_blank"}.
 
