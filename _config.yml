@@ -47,3 +47,4 @@ plugins:
  - jekyll-sitemap
  - jekyll-avatar
  - jekyll-gfm-admonitions
+ - jekyll-toc

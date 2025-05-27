@@ -24,6 +24,7 @@ links:
   github-wouter: https://github.com/molefrog/wouter
   recoiljs: https://recoiljs.org/
 date: 2022-09-19
+toc: true
 ---
 In a previous post, we had a look at [how JWT tokens can be revoked]({%- link _posts/2022-09-14-jwt-token-revocation-in-asp-net.md %}) before they expire in order to build a sign out feature. The next problem is that tokens can be captured and used in nefarious requests: token replay attacks.
 

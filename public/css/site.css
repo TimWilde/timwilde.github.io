@@ -1,3 +1,5 @@
+:root { --masthead-offset: 5rem; }
+
 a[href^="http"]::after,
 a[href^="https://"]::after
 {
@@ -157,26 +159,84 @@ pre {
 }
 
 /* Copy Button */
-pre.highlight {
+.highlight {
   position: relative;
 }
 
-pre.highlight > button {
+.highlight > button {
   opacity: 0;
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+  z-index: 999;
 
   padding: 0.25rem 0.5rem;
   border: solid 3px #b8b8b8;
   border-radius: 0.25rem;
 }
 
-pre.highlight:hover > button {
+.highlight:hover > button,
+.highlight > button:active,
+.highlight > button:focus {
   opacity: 1;
 }
 
-pre.highlight > button:active,
-pre.highlight > button:focus {
-  opacity: 1;
+/* Table of Contents */
+#toc {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+
+  padding: 0.25rem 0.5rem;
+}
+
+#toc li {
+  list-style: none;
+}
+
+#tpc ul,
+#toc li ul {
+  margin: 0;
+  padding: 0;
+}
+
+.toc-toggle {
+  border: solid 2px #ddd;
+  background-color: #f4f4f4;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.toc-toggle summary {
+  cursor: pointer;
+  margin: 0 0.5rem;
+  font-weight: bolder;
+}
+
+#toc .toc-h3 {
+  margin-left: 1rem;
+}
+
+#toc li > a {
+  display: block;
+  padding: .25em 0 .25em 1rem;
+  border-left: 2px solid transparent;
+}
+
+/* Header offset for Masthead */
+h2[id], h3[id] {
+  scroll-margin-top: var(--masthead-offset);
+}
+
+/* Fix for wide tables - make them scrollable */
+@media (max-width: 640px) {
+  .post table {
+    display: block;             /* keeps semantic <table>, but lets us scroll */
+    overflow-x: auto;           /* horizontal scroll when it’s wider than the view */
+    -webkit-overflow-scrolling: touch;  /* smooth momentum scroll on iOS */
+    max-width: 100%;            /* prevents pushing the layout wider */
+    white-space: nowrap;        /* stops long cells from wrapping awkwardly */
+  }
 }
