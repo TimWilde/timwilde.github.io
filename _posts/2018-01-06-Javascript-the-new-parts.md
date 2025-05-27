@@ -7,7 +7,6 @@ tags:
   - Game
   - Engine
   - Ecmascript
-  - "6"
 date: 2018-01-06
 ---
 As things were quiet over the Christmas period I decided to catch up with some of the recent [additions to JavaScript](http://es6-features.org). Rather than just putting together a few little "Hello World" snippets of code to play with the new features, I decided I wanted to build something useful. Well, sort of useful...
