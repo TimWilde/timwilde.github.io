@@ -15,8 +15,12 @@
   "enable_folder_templates": true,
   "folder_templates": [
     {
-      "folder": "_posts",
+      "folder": "blog/_posts",
       "template": "_system/templates/new-post.md"
+    },
+    {
+      "folder": "blog/_series",
+      "template": "_system/templates/new-category.md"
     }
   ],
   "enable_file_templates": false,
