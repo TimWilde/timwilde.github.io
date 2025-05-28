@@ -16,7 +16,7 @@
               "state": {
                 "file": "_system/Home.md",
                 "mode": "preview",
-                "source": false
+                "source": true
               },
               "pinned": true,
               "icon": "lucide-file",
@@ -185,6 +185,8 @@
   },
   "active": "e7a7b303c61786dc",
   "lastOpenFiles": [
+    "blog/_series/asp-net-security.md",
+    "_system/Home.md",
     "_includes/series.html",
     "_site/2022/09/19/jwt-token-replay-mitigation-in-asp-net/index.html",
     "_site/2022/09/19/jwt-token-replay-mitigation-in-asp-net",
@@ -196,8 +198,6 @@
     "_site/Categories/index.html",
     "_site/Categories",
     "Categories.md",
-    "blog/_series/asp-net-security.md",
-    "blog/_series",
     "_site/series.md",
     "series.md",
     "blog/_testing/2025-05-28-Testing-3.md",
@@ -209,7 +209,6 @@
     "blog/_posts/2018-01-06-Javascript-the-new-parts.md",
     "blog/_posts/2018-01-01-New-start.md",
     "_system/templates/new-post.md",
-    "_system/Home.md",
     "_posts/2025-05-28-something-something-something.md",
     "_posts/2025-05-25-something.md",
     "_posts/2022-09-19-jwt-token-replay-mitigation-in-asp-net.md",

@@ -18,6 +18,7 @@
   "onboarding": {},
   "recentFiles": [
     "_system/Home.md",
+    "blog/_series/asp-net-security.md",
     "_system/templates/new-post.md",
     "_posts/Untitled.md",
     "_posts/2025-05-25-something.md",
@@ -25,8 +26,7 @@
     "_posts/2025-05-25-something-or-other.md",
     "_posts/2022-09-14-jwt-token-revocation-in-asp-net.md",
     "_posts/2018-01-01-New-start.md",
-    "_posts/2022-09-16-better-cypress-selectors-in-asp-net.md",
-    "_posts/2020-01-10-Building-a-Kubernetes-cluster-from-scratch.md"
+    "_posts/2022-09-16-better-cypress-selectors-in-asp-net.md"
   ],
   "ribbonAction": "toolbar",
   "scriptingEnabled": false,
