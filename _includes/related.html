@@ -7,13 +7,13 @@
    {% assign maxRelatedCounter = 0 %}
    {% assign sameTagCount = 0 %}
 
-   {% if post.url != page.url %}
+   {% unless post.url == page.url or post.categories contains page.categories[0] %}
       {% for tag in post.tags %}
          {% if page.tags contains tag %}
             {% assign sameTagCount = sameTagCount | plus: 1 %}
          {% endif %}
       {% endfor %}
-   {% endif %}
+   {% endunless %}
 
    {% if sameTagCount >= minCommonTags %}
       {% capture linkMarkup %}
