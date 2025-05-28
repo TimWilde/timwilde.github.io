@@ -240,3 +240,29 @@ h2[id], h3[id] {
     white-space: nowrap;        /* stops long cells from wrapping awkwardly */
   }
 }
+
+/* Code block captions */
+div.highlighter-rouge:has(+ p.caption),
+div.highlighter-rouge:has(+ p.caption) > div.highlight,
+div.highlighter-rouge:has(+ p.caption) > div.highlight > pre.highlight {
+  margin-bottom: 0;
+  border: none;
+  border-radius: 0;
+}
+
+div.highlighter-rouge:has(+ p.caption) {
+  border: solid 1px #eee;
+  border-radius: 0.3rem 0.3rem 0 0;
+}
+
+p.caption {
+  margin-top: 0;
+  border: solid 1px #eee;
+  border-width: 0 1px 1px 1px;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 0.25rem 0.5rem;
+  background-color: #f9f9f9;
+  font-size: small;
+  border-radius: 0 0 0.3rem 0.3rem;
+  border-top: solid 1px #ccc;
+}
