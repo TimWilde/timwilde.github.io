@@ -351,7 +351,7 @@ tbody tr:nth-child(odd) th {
 
 /* Meta data line below post title */
 .post-date {
-  display: block;
+  display: inline-block;
   margin-top: -.5rem;
   margin-bottom: 1rem;
   color: #666;
@@ -359,9 +359,7 @@ tbody tr:nth-child(odd) th {
 
 /* Related posts */
 .related {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  border-top: 1px solid #eee;
+  margin: 3rem 0;
 }
 .related-posts {
   padding-left: 0;

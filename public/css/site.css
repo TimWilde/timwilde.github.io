@@ -102,10 +102,6 @@ h2.tag {
   background-color: #ccc;
 }
 
-.tag a::before {
-  content: "#";
-}
-
 .filter[data-enabled="false"] {
   display: none;
 }
@@ -268,13 +264,36 @@ p.caption {
 }
 
 .series-posts {
-  margin-top: 2rem;
+  margin: 3rem 0;
+}
+
+.metadata {
+  position: relative;
+  margin-top: -0.5rem;
+}
+
+article > h1.post-title, 
+article > .metadata {
+  text-align: center;
 }
 
 .post-series {
-  float: right;
   display: inline-block;
   margin-top: -.5rem;
   margin-bottom: 1rem;
   color: #666;
+}
+
+.post-series::after {
+  content: ", "
+}
+
+.post-series.preview {
+  position: absolute;
+  top: 0.5rem;
+  right: 0;
+}
+
+.post-series.preview::after {
+  content: none;
 }

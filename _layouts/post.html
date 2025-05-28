@@ -7,8 +7,17 @@ layout: default
 <div class="post">
   <article>
     <h1 class="post-title">{{ page.title }}</h1>
-    <span class="post-date">{{ page.date | date_to_long_string:"ordinal", "US" }}</span>
+
     <div class="page-tags">{%- include page-tags.html section="tags" tags=page.tags %}</div>
+
+    <div class="metadata">
+    {%- unless page.categories == null or page.categories.size == 0 %}
+      {%- assign categoryData = site.series | where: "category", page.categories[0] | first %}
+      <span class="post-series"><a href="{{ site.baseurl}}/Categories#{{page.categories[0]}}">{{categoryData.title}}</a> series</span>
+    {%- endunless %}
+      <span class="post-date">{{ page.date | date_to_long_string:"ordinal", "US" }}</span>
+    </div>
+
     {%- if toc != "" -%}
     <details class="toc-toggle"><summary role="button">Table of Contents</summary>{{ toc }}</details>
     {%- endif -%}
