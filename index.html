@@ -11,12 +11,14 @@ title: Home
       </a>
     </h2>
 
+    <div class="metadata">
     {%- unless post.categories == null or post.categories.size == 0 %}
       {%- assign categoryData = site.series | where: "category", post.categories[0] | first %}
-    <span class="post-series"><a href="{{ site.baseurl}}/Categories#{{post.categories[0]}}">{{categoryData.title}}</a> series</span>
+      <span class="post-series preview"><a href="{{ site.baseurl}}/Categories#{{post.categories[0]}}">{{categoryData.title}}</a></span>
     {%- endunless %}
 
-    <span class="post-date">{{ post.date | date_to_long_string: "ordinal", "US" }}</span>
+      <span class="post-date">{{ post.date | date_to_long_string: "ordinal", "US" }}</span>
+    </div>
     <div class="page-tags">{%- include page-tags.html section="tags" tags=post.tags %}</div>
     {{ post.excerpt }}
     <a href="{{ site.baseurl }}{{ post.url }}">Read the full post &raquo;</a>
