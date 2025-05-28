@@ -19,17 +19,17 @@
   "recentFiles": [
     "_system/Home.md",
     "_system/templates/new-post.md",
+    "_system/templates/new-category.md",
+    "blog/_series/something-etc.md",
+    "blog/_series/Untitled.md",
+    "Untitled.md",
+    "_system/templates/Untitled.md",
+    "blog/_series/asp-net-security.md",
     "_posts/Untitled.md",
-    "_posts/2025-05-25-something.md",
-    "_posts/2022-09-19-jwt-token-replay-mitigation-in-asp-net.md",
-    "_posts/2025-05-25-something-or-other.md",
-    "_posts/2022-09-14-jwt-token-revocation-in-asp-net.md",
-    "_posts/2018-01-01-New-start.md",
-    "_posts/2022-09-16-better-cypress-selectors-in-asp-net.md",
-    "_posts/2020-01-10-Building-a-Kubernetes-cluster-from-scratch.md"
+    "_posts/2025-05-25-something.md"
   ],
   "ribbonAction": "toolbar",
-  "scriptingEnabled": false,
+  "scriptingEnabled": true,
   "showEditInFabMenu": false,
   "showToolbarIn": {
     "audio": false,
@@ -56,12 +56,59 @@
       "hasCommand": false,
       "items": [
         {
+          "uuid": "5f5dbc84-7755-4bfe-847f-588d47149b30",
+          "hasCommand": false,
+          "icon": "lucide-archive",
+          "inGallery": false,
+          "label": "New Category",
+          "link": "",
+          "linkAttr": {
+            "commandId": "templater-obsidian:create-new-note-from-template",
+            "hasVars": false,
+            "type": "templater-obsidian",
+            "target": "tab",
+            "focus": "editor"
+          },
+          "tooltip": "Create a new Category",
+          "visibility": {
+            "desktop": {
+              "allViews": {
+                "components": [
+                  "icon",
+                  "label"
+                ]
+              }
+            },
+            "mobile": {
+              "allViews": {
+                "components": [
+                  "icon",
+                  "label"
+                ]
+              }
+            },
+            "tablet": {
+              "allViews": {
+                "components": [
+                  "icon",
+                  "label"
+                ]
+              }
+            }
+          },
+          "scriptConfig": {
+            "pluginFunction": "createFrom",
+            "sourceFile": "_system/templates/new-category.md",
+            "outputFile": "blog/_series/"
+          }
+        },
+        {
           "uuid": "f89fa4d9-7450-46d6-b326-821ca02fcbd1",
           "hasCommand": false,
           "icon": "lucide-file-plus",
           "inGallery": false,
           "label": "New Post",
-          "link": "Create new note",
+          "link": "",
           "linkAttr": {
             "commandId": "file-explorer:new-file",
             "hasVars": false,
@@ -117,7 +164,7 @@
           }
         }
       },
-      "updated": "2025-05-28T11:36:32.710Z"
+      "updated": "2025-05-28T18:54:40.706Z"
     }
   ],
   "version": 20250313.1,
