@@ -11,6 +11,11 @@ title: Home
       </a>
     </h2>
 
+    {%- unless post.categories == null or post.categories.size == 0 %}
+      {%- assign categoryData = site.series | where: "category", post.categories[0] | first %}
+    <span class="post-series"><a href="{{ site.baseurl}}/Categories#{{post.categories[0]}}">{{categoryData.title}}</a> series</span>
+    {%- endunless %}
+
     <span class="post-date">{{ post.date | date_to_long_string: "ordinal", "US" }}</span>
     <div class="page-tags">{%- include page-tags.html section="tags" tags=post.tags %}</div>
     {{ post.excerpt }}
