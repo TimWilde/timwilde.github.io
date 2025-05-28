@@ -1,6 +1,6 @@
 <%*
+const date = await tp.system.prompt("Post Date", tp.date.now("YYYY-MM-DD"))
 const title = await tp.system.prompt("Post Title")
-const date = tp.date.now("YYYY-MM-DD")
 const slug = title.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-")
 const filename = `${date}-${slug}`
 await tp.file.rename(filename)

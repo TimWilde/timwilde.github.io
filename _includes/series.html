@@ -1,0 +1,17 @@
+{%- if page.categories.size > 0 %}
+    {%- assign postCategory = page.categories[0] %}
+    {%- unless postCategory == null or postCategory == "" %}
+        {%- assign otherPosts = site.posts | where_exp: "p", "p.categories contains postCategory" | where_exp: "p", "p.url != page.url" | sort: "date" %}
+        {%- unless otherPosts.size < 1 %}
+            {%- assign categoryData = site.series | where: "category", category | first %}
+<div class="series-posts">
+    <h2>Other posts in the {{categoryData.title}} series</h2>
+    <ul>
+            {%- for post in otherPosts %}
+        <li><a href="{{post.url}}">{{post.title}}</a></li>
+            {%- endfor %}
+    </ul>
+</div>
+        {%- endunless %}
+    {%- endunless %}
+{%- endif %}

@@ -266,3 +266,7 @@ p.caption {
   border-radius: 0 0 0.3rem 0.3rem;
   border-top: solid 1px #ccc;
 }
+
+.series-posts {
+  margin-top: 2rem;
+}
