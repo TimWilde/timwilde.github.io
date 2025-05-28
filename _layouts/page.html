@@ -3,7 +3,9 @@ layout: default
 ---
 <div class="page">
   <article>
+    {%- unless page.hide_title %}
     <h1 class="page-title">{{ page.title }}</h1>
+    {%- endunless %}
     {{ content }}
   </article>
 </div>

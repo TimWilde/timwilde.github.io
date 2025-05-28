@@ -1,5 +1,5 @@
 # Page settings
-excerpt_separator:   <!--more-->
+excerpt_separator:    <!--more-->
 kramdown:
   syntax_highlighter: rouge
   syntax_highlighter_opts:
@@ -9,10 +9,15 @@ kramdown:
 # Permalinks
 permalink:           pretty
 
+# Collections
+collections_dir:     blog
+collections:
+  - series
+
 # Setup
 title:               Tim Wilde
 tagline:             'Digital Mechanic'
-description:         "I'm a full-stack, polyglot developer with a penchant for learning. I write code for all sorts of platforms including web, mobile, services, desktop, IoT, etc. This blog is about the things I learn along the way."
+description:         "I build software and systems for a living and write about the process—what works, what doesn’t, and the thinking behind it. This blog captures the technical lessons I’ve picked up along the way."
 url:                 https://timwil.de
 baseurl:             ''
 paginate:            4
@@ -20,7 +25,7 @@ paginate_path:       "/page-:num/"
 page_excerpts:       true
 
 # Exclusions
-future:             false
+future:              false
 exclude:
  - '/vendor/'
  - '/breakanoid/CREDITS.md'
@@ -42,6 +47,7 @@ contact:
   github:           https://github.com/timwilde
 
 plugins:
+ - jekyll-redirect-from
  - jekyll-paginate
  - jekyll-gist
  - jekyll-sitemap
