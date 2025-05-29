@@ -4,9 +4,9 @@
 
    const colors = chroma
       .cubehelix()
-      .start(200)
-      .rotations(1)
-      .gamma(1.5)
+      .start(100)
+      .rotations(0.80)
+      .gamma(1.25)
       .lightness([0.6, 0.8])
       .scale()
       .colors(tags.length);
